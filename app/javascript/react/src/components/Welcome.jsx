@@ -4,7 +4,7 @@ import * as ReactDOM from 'react-dom'
 const Welcome = () => {
   return (
     <div className="container">
-      <h1>Hello, World!</h1>
+      <h1>World!</h1>
     </div>
   );
 };
