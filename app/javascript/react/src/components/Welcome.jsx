@@ -1,19 +1,20 @@
 import * as React from 'react'
-import * as ReactDOM from 'react-dom'
 
 const Welcome = () => {
   return (
-    <div className="container">
-      <h1>World!</h1>
+    <div className="">
+
+      {/* <div className="row align-items-center d-flex vh-100">
+        <div className="col-6">s
+        </div>
+        <div className="col-6 d-flex justify-content-end">
+          <Login />
+        </div>
+      </div> */}
+
+
     </div>
   );
 };
-
-document.addEventListener('DOMContentLoaded', () => {
-  ReactDOM.render(
-    <Welcome />,
-    document.getElementById('root')
-  );
-});
 
 export default Welcome

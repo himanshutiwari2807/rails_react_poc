@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../stylesheets/style.css"],
+  "sourcesContent": [".login-page.container{\n    width: 80%;\n    max-width: 80%;\n   \n}\n\n.sidebar{\n    width: 200px;\n    position: fixed;\n    left: 0;\n    top: 50px;\n    height: 100%;\n}\n.navbar{\n    position: fixed;\n    top: 0;\n    left: 0;\n    display: block;\n    width: 100%;\n}\n.screens-section-container{\n    margin-top: 70px;\n    padding-left: 240px;\n}"],
+  "mappings": ";AAAA,CAAC,UAAU,CAAC;AACR,SAAO;AACP,aAAW;AAEf;AAEA,CAAC;AACG,SAAO;AACP,YAAU;AACV,QAAM;AACN,OAAK;AACL,UAAQ;AACZ;AACA,CAAC;AACG,YAAU;AACV,OAAK;AACL,QAAM;AACN,WAAS;AACT,SAAO;AACX;AACA,CAAC;AACG,cAAY;AACZ,gBAAc;AAClB;",
+  "names": []
+}
