@@ -3,24 +3,17 @@ import { Image } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
 const CourseDetails = (props) => {
-
-
-
   const navigate = useNavigate();
-
-
 
   const JoinCourse = () => {
     props.setCourseStart(true);
     navigate("/Course-dashboard");
-  
   };
-
 
   return (
     <>
       <div className="courseDetails-card">
-        <div className="col-md-8">
+        <div className="col-md-9">
           <h2>
             MyLab Statistics with Pearson eText Access Code <br /> for
             Elementary Statistics

@@ -1,29 +1,25 @@
 import React, { useState } from "react";
-import { ReactReader } from "react-reader";
 import CourseSideBar from "./CourseSidebar";
 import CourseNavbar from "./CourseNavbar";
+import CourseContent from "./CourseContent";
 
 const CoursePlayer = () => {
-    // const [location, setLocation] = useState(0); // Initialize state without type annotations
+  const [content, setContent] = useState(null);
 
-    return (
-        // <div style={{ height: '100vh', display: 'flex' }}>
-        //     <div style={{ flex: 1 }}>
-        //         <ReactReader
-        //             url="/epub/egscorm.epub" // Path to your local EPUB file
-        //             location={location}
-        //             epubInitOptions={{
-        //                 openAs: 'epub',
-        //             }}
-        //             locationChanged={(epubcfi) => setLocation(epubcfi)}
-        //         />
-        //     </div>
-        // </div>
-        <>
-        <CourseNavbar />
-        <CourseSideBar />
-        </>
-    );
+  const handleContentChange = (newContent) => {
+    // Set the URL to access files in the public folder
+    setContent(`/content/${newContent}`);
+  };
+
+  return (
+    <>
+      <CourseNavbar />
+      <div className="d-flex">
+        <CourseSideBar onContentChange={handleContentChange} />
+        <CourseContent iframeSrc={content} />
+      </div>
+    </>
+  );
 };
 
 export default CoursePlayer;

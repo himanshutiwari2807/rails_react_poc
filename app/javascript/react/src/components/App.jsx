@@ -49,7 +49,9 @@ const App = () => {
                     <Route path="/Home" element={<Home />} />
                     <Route
                       path="/Course-details"
-                      element={<CourseDetails setCourseStart={setCourseStart} />}
+                      element={
+                        <CourseDetails setCourseStart={setCourseStart} />
+                      }
                     />
                   </Routes>
                 </div>

@@ -126,19 +126,46 @@
     }
 }
 
-.course-sidebar{
-    ul li {
-        list-style-type: none;
+.course-sidebar {
+    height: auto;
+    background: white;
+    border-right: 1px solid rgb(216, 216, 216);
+    padding: 20px;
 
-        button{
-            width: 100%;
-            border: none;
-            background: none;
-            text-align: left;
-            padding: 7px 10px;
-            border-bottom: 1px solid gainsboro;
+
+    h5 {
+        font-size: 20px;
+        line-height: 23px;
+        margin-bottom: 20px;
+    }
+
+    ul {
+        padding: 0px;
+
+        li {
+            list-style-type: none;
+
+            button {
+                width: 100%;
+                border: none;
+                background: none;
+                text-align: left;
+                padding: 7px 10px;
+                border-bottom: 1px solid gainsboro;
+                font-size: 14px;
+                line-height: 23px;
+                font-weight: 400;
+            }
         }
     }
 
-    
+
 }
+
+.course-content {
+    height: 90vh;
+    width: 100%;
+    background-color: #ececec85;
+    display: flex;
+    justify-content: center;
+align-items: center;}

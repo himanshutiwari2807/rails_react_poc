@@ -1,16 +1,12 @@
 import React from "react";
 import Recomendation from "./Recommendation";
 
-
-
-const Home = ( )=>{
-return(
+const Home = () => {
+  return (
     <>
-    <Recomendation />
+      <Recomendation />
     </>
-)
-
+  );
 };
-
 
 export default Home;

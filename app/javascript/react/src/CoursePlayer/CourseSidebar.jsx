@@ -1,36 +1,33 @@
 import React from "react";
 
-const CourseSideBar = () => {
+const CourseSideBar = ({ onContentChange }) => {
   return (
     <>
-      <div
-        class="offcanvas offcanvas-start show course-sidebar"
-        data-bs-scroll="true"
-        tabindex="-1"
-        id="offcanvasWithBothOptions"
-        aria-labelledby="offcanvasWithBothOptionsLabel"
-      >
-        <div class="offcanvas-header">
-          <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">
+      <div className="course-sidebar col-md-2">
+        <div className="offcanvas-header">
+          <h5>
             IBM: Introduction to Web Development with HTML5, CSS3, and
             JavaScript
           </h5>
         </div>
-        <div class="offcanvas-body">
+        <div className="offcanvas-body">
           <p>Model Completed.</p>
-
           <ul>
             <li>
-              <button>Content</button>
+              <button onClick={() => onContentChange("text.html")}>Text</button>
             </li>
             <li>
-              <button>Video</button>
+              <button onClick={() => onContentChange("video.mp4")}>
+                Video
+              </button>
             </li>
             <li>
-              <button>Audio</button>
+              <button onClick={() => onContentChange("audio.mp3")}>
+                Audio
+              </button>
             </li>
             <li>
-              <button>Quize</button>
+              <button onClick={() => onContentChange("quiz.html")}>Quiz</button>
             </li>
           </ul>
         </div>
