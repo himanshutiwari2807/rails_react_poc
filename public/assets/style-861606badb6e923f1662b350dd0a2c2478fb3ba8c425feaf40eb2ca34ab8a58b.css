@@ -1,0 +1,177 @@
+
+.login-page.container {
+  width: 80%;
+  max-width: 80%;
+}
+body {
+  font-family: "Roboto Slab", serif !important;
+}
+
+.navbar-style {
+  position: fixed;
+  top: 0;
+  right: 0;
+  display: block;
+  width: 100%;
+  background: #0093c4;
+  padding: 10px;
+}
+.screens-section-container {
+  margin-top: 70px;
+  padding-left: 240px;
+}
+.vst-logo-wrapper {
+  padding: 20px 10px 20px 10px;
+  text-align: center;
+}
+
+
+/* Recommendation section */
+.recommendation {
+  background: #f9f9f9;
+  padding: 20px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.recommendation h1 {
+  margin: 0 0 10px;
+}
+
+.recommendation p {
+  margin: 0 0 10px;
+}
+
+.offer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.free {
+  background: #e74c3c;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 3px;
+}
+
+.expires {
+  color: #e67e22;
+  margin: 5px 0;
+}
+
+.pricing {
+  display: flex;
+  align-items: baseline;
+  margin: 10px 0;
+}
+
+.original-price {
+  text-decoration: line-through;
+  color: #888;
+  margin-right: 10px;
+}
+
+.discounted-price {
+  font-size: 1.5em;
+  color: #27ae60;
+}
+
+.book-btn {
+  background: #3498db;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.book-btn:hover {
+  background: #2980b9;
+}
+
+/* Course details section */
+.course-details {
+  background: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.course-details h2 {
+  margin: 0 0 10px;
+}
+
+.course-details p {
+  margin: 0 0 10px;
+}
+
+.continue-reading {
+  display: inline-block;
+  color: #3498db;
+  text-decoration: none;
+  margin: 10px 0;
+}
+
+.continue-reading:hover {
+  text-decoration: underline;
+}
+
+.progress {
+  margin-top: 20px;
+}
+
+.progress-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.result {
+  background: #f9f9f9;
+  padding: 10px;
+  border-radius: 3px;
+  margin: 5px 0;
+}
+
+/* Learning path section */
+.learning-path {
+  background: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.learning-path .course {
+  margin-bottom: 20px;
+}
+
+.learning-path .course h3 {
+  margin: 0 0 10px;
+}
+
+.view-syllabus, .continue-course {
+  display: inline-block;
+  color: #3498db;
+  text-decoration: none;
+  margin-right: 10px;
+}
+
+.view-syllabus:hover, .continue-course:hover {
+  text-decoration: underline;
+}
+
+
+.recommended-card {
+  display: flex;
+  padding: 10px;
+  border-radius: 6px;
+  background-color: #FFFFFF;
+  border: 1px solid #EFEFEF;
+  flex: 30%;
+  height: 300px;
+}
+
+.recommended-card img{
+  height: 200px;
+  width: 200px;
+}

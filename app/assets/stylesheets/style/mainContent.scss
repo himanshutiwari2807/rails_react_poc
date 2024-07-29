@@ -125,3 +125,20 @@
         border: none;
     }
 }
+
+.course-sidebar{
+    ul li {
+        list-style-type: none;
+
+        button{
+            width: 100%;
+            border: none;
+            background: none;
+            text-align: left;
+            padding: 7px 10px;
+            border-bottom: 1px solid gainsboro;
+        }
+    }
+
+    
+}

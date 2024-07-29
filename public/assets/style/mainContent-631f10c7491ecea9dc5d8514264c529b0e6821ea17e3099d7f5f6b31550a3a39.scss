@@ -1,0 +1,37 @@
+.screens-container {
+    h3 {
+        font-size: 16px;
+        line-height: 19px;
+        font-weight: 600;
+    }
+
+    p {
+        font-size: 14px;
+        font-weight: 400;
+        text-align: left;
+    }
+}
+
+
+
+.recommended-card {
+    display: flex;
+    padding: 15px;
+    border-radius: 6px;
+    background-color: #FFFFFF;
+    border: 1px solid #EFEFEF;
+    margin-top: 30px;
+
+    h3{
+        margin-bottom: 10px;
+    }
+    p {
+        line-height: 21px;
+        margin-bottom: 15px;
+    }
+
+    img {
+      max-height: 200px;
+      margin-right: 15px;
+    }
+}

@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../stylesheets/style.css"],
+  "sourcesContent": [".login-page.container {\n  width: 80%;\n  max-width: 80%;\n}\nbody {\n  font-family: \"Roboto Slab\", serif !important;\n}\n\n.navbar-style {\n  position: fixed;\n  top: 0;\n  right: 0;\n  display: block;\n  width: 100%;\n  background: #0093c4;\n  padding: 10px;\n}\n.screens-section-container {\n  margin-top: 58px;\n  padding-top: 20px;\n  padding-left: 240px;\n  height: 100vh;\n  padding-right: 40px;\n}\n.vst-logo-wrapper {\n  padding: 20px 10px 20px 10px;\n  text-align: center;\n}\n"],
+  "mappings": ";AAAA,CAAC,UAAU,CAAC;AACV,SAAO;AACP,aAAW;AACb;AACA;AACE,eAAa,aAAa,EAAE;AAC9B;AAEA,CAAC;AACC,YAAU;AACV,OAAK;AACL,SAAO;AACP,WAAS;AACT,SAAO;AACP,cAAY;AACZ,WAAS;AACX;AACA,CAAC;AACC,cAAY;AACZ,eAAa;AACb,gBAAc;AACd,UAAQ;AACR,iBAAe;AACjB;AACA,CAAC;AACC,WAAS,KAAK,KAAK,KAAK;AACxB,cAAY;AACd;",
+  "names": []
+}
