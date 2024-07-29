@@ -12,11 +12,22 @@
   box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
 
   .heading {
-    h1 {
-      font-size: 2rem;
-      color: #0c0015;
+    h2 {
+      font-size: 28px;
+      color: orange;
+      border-bottom: 1px solid  rgb(0, 51, 128);
+      margin-bottom: 30px;
+      padding-bottom: 10px;
+      text-align: center;
+  
+    }
+    h1{
+      font-size: 32px;
+      color: black;
+  
     }
   }
+
 
   form {
     padding: 30px 0;
@@ -33,12 +44,12 @@ margin-bottom: 5px;
       font-size: 14px;
       border-radius: 5px;
       margin-bottom: 15px;
-      border-color: #0c0015;
+      border: 1px solid #ccc;
       background: transparent;
 
       &:active,
       &:focus {
-        outline: 1px solid #a43af8;
+        outline: 1px solid #bbbbbb;
       }
     }
     button {

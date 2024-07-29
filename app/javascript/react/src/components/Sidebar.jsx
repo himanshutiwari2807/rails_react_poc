@@ -1,60 +1,68 @@
 import React from "react";
+import { Image } from "react-bootstrap";
 import { Link, NavLink } from "react-router-dom";
 
 
 const Sidebar = () => {
   return (
-    <div className="sidebar border-end bg-white" id="sidebar-wrapper">
+    <div className="sidebar-wrapper border-end bg-white" id="sidebar-wrapper">
       <div className="list-group list-group-flush">
+        <div className="vst-logo-wrapper">
+        <Image
+                    className="sidebar-logo"
+                    src="../../assets/images/vitalsource_logo.svg"
+                    alt="VST-logo"
+                  />
+        </div>
         <NavLink
-          to="/dashboard"
+          to="/Home"
           className={({ isActive }) =>
             isActive
               ? "list-group-item list-group-item-action list-group-item-light p-3 active"
               : "list-group-item list-group-item-action list-group-item-light p-3"
           }
         >
-          Dashboard
+          Home
         </NavLink>
         <NavLink
-          to="/entrances"
+          to="/Search"
           className={({ isActive }) =>
             isActive
               ? "list-group-item list-group-item-action list-group-item-light p-3 active"
               : "list-group-item list-group-item-action list-group-item-light p-3"
           }
         >
-          Entrances
+          Search
         </NavLink>
         <NavLink
-          to="/parking_lots"
+          to="/My-library"
           className={({ isActive }) =>
             isActive
               ? "list-group-item list-group-item-action list-group-item-light p-3 active"
               : "list-group-item list-group-item-action list-group-item-light p-3"
           }
         >
-          Parking Lots
+         My Library
         </NavLink>
         <NavLink
-          to="/parking_slots"
+          to="/Favorites"
           className={({ isActive }) =>
             isActive
               ? "list-group-item list-group-item-action list-group-item-light p-3 active"
               : "list-group-item list-group-item-action list-group-item-light p-3"
           }
         >
-          Parking Slots
+          Favorites
         </NavLink>
         <NavLink
-          to="/bookings"
+          to="/Expired"
           className={({ isActive }) =>
             isActive
               ? "list-group-item list-group-item-action list-group-item-light p-3 active"
               : "list-group-item list-group-item-action list-group-item-light p-3"
           }
         >
-          Bookings
+          Expired
         </NavLink>
       </div>
     </div>

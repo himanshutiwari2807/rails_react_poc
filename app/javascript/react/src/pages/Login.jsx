@@ -18,7 +18,11 @@ const Login = (props) => {
         <div className="col-6"></div>
         <div className="col-6 d-flex justify-content-end">
           <div className="login">
+
             <div className="heading">
+              
+                <h2 className="text-center">Professional Learning</h2>
+              
               <h1>Login</h1>
 
               <form>
