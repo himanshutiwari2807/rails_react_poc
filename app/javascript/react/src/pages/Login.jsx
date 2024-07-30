@@ -9,7 +9,7 @@ const Login = (props) => {
   const handleLogin = () => {
     props.setLogged(true);
     localStorage.setItem("loggedIn", "true"); // Store logged in state in localStorage
-    navigate("/dashboard");
+    navigate("/Home");
   };
 
   return (

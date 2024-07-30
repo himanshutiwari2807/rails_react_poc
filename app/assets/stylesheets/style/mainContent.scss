@@ -163,9 +163,25 @@
 }
 
 .course-content {
-    height: 90vh;
     width: 100%;
-    background-color: #ececec85;
+    height: 90vh; /* Full viewport height */
+    background-color: aliceblue;
     display: flex;
     justify-content: center;
-align-items: center;}
+    overflow-y: auto; /* Allow vertical scrolling */
+}
+
+.iframe-wrapper {
+    display: flex;
+    justify-content: center;
+    width: 80%;
+    padding: 30px;
+    background-color: white;
+  
+}
+
+iframe {
+    display:block;
+    width:100%;
+    height:auto;
+  }

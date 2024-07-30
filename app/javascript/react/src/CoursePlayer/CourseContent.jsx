@@ -1,16 +1,23 @@
 import React, { useRef } from "react";
+import CourseSample from "./CourseSample";
 
 const CourseContent = ({ iframeSrc }) => {
   const iframeRef = useRef(null);
 
+  console.log(iframeRef);
+  console.log(iframeSrc)
   return (
-    <div className="ourse-content col-md-10">
-      <iframe
+    <div className="course-content">
+      <div className="iframe-wrapper">
+        { iframeSrc  ?
+        <iframe
         ref={iframeRef}
         title="Course Content"
-        style={{ width: "100%", height: "90vh", border: "none" }}
         src={iframeSrc}
-      />
+      />:<div><CourseSample /></div>}
+   
+      </div>
+
     </div>
   );
 };

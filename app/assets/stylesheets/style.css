@@ -4,6 +4,7 @@
 }
 body {
   font-family: "Roboto Slab", serif !important;
+  overflow:  hidden !important;
 }
 
 .navbar-style {
@@ -12,7 +13,7 @@ body {
   right: 0;
   display: block;
   width: 100%;
-  background: #0093c4;
+  background-color: #F6F8FC;
   padding: 10px;
 }
 .screens-section-container {

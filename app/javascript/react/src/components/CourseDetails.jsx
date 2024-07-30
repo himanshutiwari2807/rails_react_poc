@@ -8,7 +8,7 @@ const CourseDetails = (props) => {
   const JoinCourse = () => {
     props.setCourseStart(true);
     navigate("/Course-dashboard");
-  };
+  };2
 
   return (
     <>

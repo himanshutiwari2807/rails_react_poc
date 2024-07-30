@@ -11,7 +11,7 @@ const CourseSideBar = ({ onContentChange }) => {
           </h5>
         </div>
         <div className="offcanvas-body">
-          <p>Model Completed.</p>
+          <p>Course model</p>
           <ul>
             <li>
               <button onClick={() => onContentChange("text.html")}>Text</button>
