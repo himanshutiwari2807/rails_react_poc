@@ -6,7 +6,7 @@ const AppNavbar = (props) => {
   const navigate = useNavigate();
 
   const Logout = () => {
-    debugger;
+   
     props.setLogged(false);
     localStorage.removeItem("loggedIn"); // Remove logged in state from localStorage on logout
     navigate("/login");

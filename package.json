@@ -8,13 +8,15 @@
     "autoprefixer": "^10.4.19",
     "bootstrap": "^5.3.3",
     "bootstrap-icons": "^1.11.3",
+    "epubjs": "^0.3.93",
     "esbuild": "^0.23.0",
     "nodemon": "^3.1.4",
     "postcss": "^8.4.39",
     "postcss-cli": "^11.0.0",
     "react": "^18.3.1",
+    "react-bootstrap": "^2.10.4",
     "react-dom": "^18.3.1",
-    "react-router-dom": "^6.24.1",
+    "react-router-dom": "^6.25.1",
     "sass": "^1.77.6"
   },
   "scripts": {
@@ -26,5 +28,8 @@
   },
   "browserslist": [
     "defaults"
-  ]
+  ],
+  "devDependencies": {
+    "esbuild-plugin-svg": "^0.1.0"
+  }
 }

@@ -72,3 +72,5 @@ end
 
 gem "sassc-rails"
 
+gem 'bcrypt'
+gem 'jwt'
