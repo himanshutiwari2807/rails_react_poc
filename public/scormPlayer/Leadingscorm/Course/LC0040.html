@@ -1,0 +1,175 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Leading Change</title>
+	<link rel="stylesheet" type="text/css" href="css/styles.css">
+
+	<script type="text/javascript" src="javascript/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="javascript/main.js"></script>
+	<script type="text/javascript">
+		pageNext = "LC0050";
+		pageBack = "LC0030";
+		nextActive = false;
+		backActive = true;
+
+		$(document).ready(function () {
+			setTimeout(function () {
+				enterPage();
+				window.setTimeout(function () {
+					$("#audio00").trigger("play");
+				}, 500);
+			}, 50);
+			//$("#btnSubmit").on("click", function(){
+			$("#quizForm").submit(function (event) {
+				event.preventDefault();
+				var ansArray = [];
+				var valid1 = true;
+				/*ansArray[0] = $("#c01").val();
+				 ansArray[1] = $("#c02").val();
+				 ansArray[2] = $("#c03").val();
+				 ansArray[3] = $("#c04").val();
+				 ansArray[4] = $("#c05").val();*/
+				$("input[name='q1']").each(function (index) {
+					ansArray[index] = $(this).val();
+					if (isNaN(ansArray[index])) {
+						alert("Please enter numbers 1-5.");
+						valid1 = false;
+						return false;
+					} else {
+						if (ansArray[index] > 5) {
+							alert("Please enter numbers 1-5 only.");
+							valid1 = false;
+							return false;
+						}
+					}
+				});
+				if (valid1) {
+					var ansArray2 = jQuery.unique(ansArray);
+					//alert(ansArray2 + " : " + ansArray2.length);
+					if (ansArray2.length < 5) {
+						alert("Please use each number only once.");
+						return false;
+					}
+
+					if ((ansArray[0] == 1) || (ansArray[3] == 1) || (ansArray[4] == 1)) {
+						//alert("This first meeting with your staff is a key opportunity for you to convey your strategy and vision for the future of the office. Try again.");
+						startPopUp3("Incorrect", "This first meeting with your staff is a key opportunity for you to convey your strategy and vision for the future of the office. Try again.", 450, 300);
+						//return false;
+					}
+					if ((ansArray[1] == 1) || (ansArray[2] == 1)) {
+						startPopUp3("Correct", "Looks like you have your priorities in order! Good luck at the meeting.", 450, 300);
+						activateNext();
+						//return false;
+					}
+				}
+			});
+		});
+
+		function enterPageLocal() {
+		}
+
+	</script>
+	<style type="text/css">
+		input[type=text] {
+			float: left;
+			/*margin-top: 7px;*/
+			position: relative;
+			left: 2px;
+			width: 15px;
+		}
+
+		label {
+			display: block;
+			padding-left: 33px;
+		}
+
+		ul {
+			margin: 0;
+			padding: 0;
+		}
+
+		.btnDecide {
+			display: block;
+			width: 100px;
+			height: 47px;
+			background-image: url("images/sprite_decide.png");
+			background-position: top;
+			border: none;
+			margin-left: auto;
+			margin-right: auto;
+		}
+
+		.btnDecide:hover {
+			background-position: center;
+			cursor: pointer;
+		}
+
+		.scrImage {
+			width: 514px;
+			height: 343px;
+			float: right;
+			margin-left: 30px;
+		}
+
+		@media only screen and (max-width: 1005px) {
+			.scrImage {
+				width: 386px;
+				height: 257px;
+			}
+		}
+	</style>
+</head>
+<body>
+<div class="contentTop">
+	<div id="contentBody"><h1 id="courseHeader"></h1>
+
+		<div id="divProgress"></div>
+
+		<div class="headerBlock"><h2>Time to Decide</h2>
+
+			<!--<div id="leadText1" class="insideText">After receiving these replies, you send a calendar appointment to your entire staff for an all-hands meeting. You take the feedback you’ve received so far to develop a strategic approach for this meeting.</div>-->
+			<!--<div id="leadText2">Rank the following agenda items in terms of priority for this first meeting:</div>-->
+		</div>
+		<div id="scrollBlock" class="textBlock">
+
+			<img class="scrImage" src="imagesLsn/LC0330.png" alt="Shannon">
+
+			<div class="choiceText">
+				<form id="quizForm" autocomplete="off">
+					<ul style="list-style-type:none">
+						<li><input type="text" id="c01" name="q1" required maxlength="1" size="1"><label for="c01"> Set goals with the team to complete the HRIT System project.</label></li>
+						<li><input type="text" id="c02" name="q1" required maxlength="1" size="1"><label for="c02"> Communicate your vision for the future of the office and the HRIT Integration Plan.</label></li>
+						<li><input type="text" id="c03" name="q1" required maxlength="1" size="1"><label for="c03"> Discuss the value and importance of the HRIT Integration Plan.</label></li>
+						<li><input type="text" id="c04" name="q1" required maxlength="1" size="1"><label for="c04"> Address the team’s concerns about the timeline of the HRIT System project. </label></li>
+						<li><input type="text" id="c05" name="q1" required maxlength="1" size="1"><label for="c05"> Develop a project outline by identifying key milestones. </label></li>
+						<li style="width:50%"><input type="submit" value="" title="Submit" class="btnDecide"></li>
+					</ul>
+					<!--<button type="button" id="btnSubmit">Submit</button>-->
+
+					<!--<input type="button" id="btnSubmit" title="Submit" value="Submit">-->
+				</form>
+				<audio id="audio00">
+					<source src="audio/LC0040_Narrator.mp3">
+				</audio>
+			</div>
+		</div>
+	</div>
+</div>
+<div id="navigationButtons">
+	<nav>
+		<div id="nextNavBar" class="sideNavBar"><a href="javascript:void(0);" id="btnNextID" class="btnNext" title="Next"></a></div>
+		<div id="backNavBar" class="sideNavBar"><a href="javascript:void(0);" id="btnBackID" class="btnBack" title="Back"></a></div>
+		<div class="navblock">
+			<p class="promptText" id="prompt_text" align="center">Number the agenda items from 1 to 5, from most to least important. Then select Decide.</p>
+			<span id="ContentReviewDiv" style="display:none;float:left;"></span>
+
+
+			<div id="bottomButtons"></div>
+		</div>
+	</nav>
+</div>
+</body>
+</html>

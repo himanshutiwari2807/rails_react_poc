@@ -1,0 +1,133 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Leading Change</title>
+	<link rel="stylesheet" type="text/css" href="css/styles.css">
+
+	<script type="text/javascript" src="javascript/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="javascript/main.js"></script>
+	<script type="text/javascript">
+		pageNext = "";
+		pageBack = "LC0170";
+		nextActive = false;
+		backActive = true;
+
+		$(document).ready(function () {
+			setTimeout(function () {
+				enterPage();
+				parent.choice_0220 = "A";
+				window.setTimeout(function () {
+					if (parent.secondAudio) {
+						$("#audio02").trigger("play");
+						parent.secondAudio = false;
+					} else {
+						$("#audio00").trigger("play");
+					}
+				}, 500);
+			}, 50);
+			$("#buttonDecide").on("click", function(){
+				var cTarget = $('input[name=q1]:checked', '#toDecide').val();
+				switch (cTarget) {
+					case "c01":
+						document.location.href = "LC0190.html";
+						break;
+					case "c02":
+						document.location.href = "LC0200.html";
+						break;
+					case "c03":
+						document.location.href = "LC0210.html";
+						break;
+				}
+			});
+		});
+
+		function enterPageLocal() {
+		}
+
+	</script>
+	<style type="text/css">
+		input[type=radio] {
+			float: left;
+			margin-top: 7px;
+			padding-left:5px;
+			position: relative;
+			left: 2px;
+			transform: scale(1.5);
+		}
+
+		label {
+			display: block;
+			padding-left: 38px;
+		}
+
+		ul {
+			margin:0; padding:0;
+		}
+
+		.scrImage {
+			width: 520px;
+			height: 360px;
+			float: right;
+			margin-left:30px;
+		}
+
+		@media only screen and (max-width: 1005px) {
+			.scrImage {
+				width: 390px;
+				height: 270px;
+			}
+		}
+	</style>
+</head>
+<body>
+<div class="contentTop">
+	<div id="contentBody"><h1 id="courseHeader"></h1>
+
+		<div id="divProgress"></div>
+
+		<div class="headerBlock"><h2>Time to Decide</h2>
+
+			<!--<div id="leadText1" class="insideText">How do you handle this situation?</div>-->
+			<!--<div id="leadText2">xxxxxxxxxxxxxxxxxxxxxxxxxx</div>-->
+		</div>
+		<div id="scrollBlock" class="textBlock">
+
+			<img class="scrImage" src="imagesLsn/LC0180.png" alt="Max">
+
+			<div class="choiceText">
+				<form id="toDecide">
+				<ul style="list-style-type:none">
+					<li><input type="radio" id="c01" value="c01" name="q1"><label for="c01"> Keep moving forward with the project. Ask Jason to assemble a Quality Control team to validate all data, including the alleged faulty data.</label></li>
+					<li><input type="radio" id="c02" value="c02" name="q1"><label for="c02"> Halt the project and alert the Deputy Secretary of the allegations.</label></li>
+					<li><input type="radio" id="c03" value="c03" name="q1"><label for="c03"> Keep moving forward with the project. Arrange a meeting with the Director of Pay and Benefits to discuss data integrity.</label></li>
+					<li style="width:50%"><a href="javascript:void(0);" id="buttonDecide" class="btnDecide" title="Decide"></a></li>
+				</ul>
+					</form>
+				<audio id="audio00">
+					<source src="audio/LC0180_Narrator.mp3">
+				</audio>
+				<audio id="audio02">
+					<source src="audio/LC0220_Narrator_2.mp3">
+				</audio>
+			</div>
+		</div>
+	</div>
+</div>
+<div id="navigationButtons">
+	<nav>
+		<div id="nextNavBar" class="sideNavBar"><a href="javascript:void(0);" id="btnNextID" class="btnNext" title="Next"></a></div>
+		<div id="backNavBar" class="sideNavBar"><a href="javascript:void(0);" id="btnBackID" class="btnBack" title="Back"></a></div>
+		<div class="navblock">
+			<p class="promptText" id="prompt_text" align="center">Select a response.</p>
+			<span id="ContentReviewDiv" style="display:none;float:left;"></span>
+
+
+			<div id="bottomButtons"></div>
+		</div>
+	</nav>
+</div>
+</body>
+</html>

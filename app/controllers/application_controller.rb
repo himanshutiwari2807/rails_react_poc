@@ -13,7 +13,11 @@ class ApplicationController < ActionController::Base
     rescue ActiveRecord::RecordNotFound, JWT::DecodeError, JWT::ExpiredSignature
       render json: { error: 'Not Authorized' }, status: :unauthorized and return
     end
-
+    
+    def fallback_index_html
+      render :file => 'public/index.html'
+    end
+    
     render json: { error: 'Not Authorized' }, status: :unauthorized unless @current_user
   end
 end

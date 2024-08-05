@@ -1,0 +1,122 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Leading Change</title>
+	<link rel="stylesheet" type="text/css" href="css/styles.css">
+
+	<script type="text/javascript" src="javascript/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="javascript/main.js"></script>
+	<script type="text/javascript">
+		pageNext = "";
+		pageBack = "LC0380";
+		nextActive = false;
+		backActive = true;
+
+		$(document).ready(function () {
+			setTimeout(function () {
+				enterPage();
+				window.setTimeout(function () {
+					if (parent.secondAudio) {
+						$("#audio02").trigger("play");
+						parent.secondAudio = false;
+					} else {
+						$("#audio00").trigger("play");
+					}
+				}, 500);
+			}, 50);
+			$("#buttonDecide").on("click", function(){
+				var cTarget = $('input[name=q1]:checked', '#toDecide').val();
+				switch (cTarget) {
+					case "c01":
+						document.location.href = "LC0430.html";
+						break;
+					case "c02":
+						document.location.href = "LC0440.html";
+						break;
+					case "c03":
+						document.location.href = "LC0450.html";
+						break;
+					case "c04":
+						document.location.href = "LC0460.html";
+				}
+			});
+			//$("audio").trigger("play");
+		});
+
+		function enterPageLocal() {
+		}
+
+	</script>
+	<style type="text/css">
+		input[type=radio] {
+			float: left;
+			margin-top: 7px;
+			padding-left:5px;
+			position: relative;
+			left: 2px;
+			transform: scale(1.5);
+		}
+
+		label {
+			display: block;
+			padding-left: 38px;
+		}
+
+		ul {
+			margin:0; padding:0;
+		}
+	</style>
+</head>
+<body>
+<div class="contentTop">
+	<div id="contentBody"><h1 id="courseHeader"></h1>
+
+		<div id="divProgress"></div>
+
+		<div class="headerBlock"><h2>Time to Decide</h2>
+
+			<!--<div id="leadText1" class="insideText">Two weeks later, you receive an email from Shannon outlining a new idea she has for the HRIT System. She recently attended an interagency council meeting where the topic of discussion focused on the importance of tracking retirement data. As a result, she is asking to link retirement data to the System.</div>-->
+			<!--<div id="leadText2">What’s your strategy for dealing with this issue?</div>-->
+		</div>
+		<div id="scrollBlock" class="textBlock">
+
+			<img src="imagesLsn/LC0420.png" width="520" height="360" alt="Shannon" style="float: right; margin-left:30px;">
+
+			<div class="choiceText">
+				<form id="toDecide">
+				<ul style="list-style-type:none">
+					<li><input type="radio" id="c01" value="c01" name="q1"><label for="c01"> Tell Shannon not to worry—your team will get it done.</label></li>
+					<li><input type="radio" id="c02" value="c02" name="q1"><label for="c02"> Tell Shannon that it can’t happen. Your team is already working hard, and they are stretched too thin.</label></li>
+					<li><input type="radio" id="c03" value="c03" name="q1"><label for="c03"> Tell Shannon that it’s a great idea, and you need to gather more information from your team to figure out how you’ll make this happen. Recommend that the retirement data be integrated now.</label></li>
+					<li><input type="radio" id="c04" value="c04" name="q1"><label for="c04"> Tell Shannon that it’s a great idea, and you need to gather more information from your team to figure out how you’ll make this happen. Recommend that the retirement data be phased into the System at a later date.</label></li>
+					<li style="width:50%"><a href="javascript:void(0);" id="buttonDecide" class="btnDecide" title="Decide"></a></li>
+				</ul>
+					</form>
+				<audio id="audio00">
+					<source src="audio/LC0420_Narrator.mp3">
+				</audio>
+				<audio id="audio02">
+					<source src="audio/LC0220_Narrator_2.mp3">
+				</audio>
+			</div>
+		</div>
+	</div>
+</div>
+<div id="navigationButtons">
+	<nav>
+		<div id="nextNavBar" class="sideNavBar"><a href="javascript:void(0);" id="btnNextID" class="btnNext" title="Next"></a></div>
+		<div id="backNavBar" class="sideNavBar"><a href="javascript:void(0);" id="btnBackID" class="btnBack" title="Back"></a></div>
+		<div class="navblock">
+			<p class="promptText" id="prompt_text" align="center">Select a response.</p>
+			<span id="ContentReviewDiv" style="display:none;float:left;"></span>
+
+
+			<div id="bottomButtons"></div>
+		</div>
+	</nav>
+</div>
+</body>
+</html>

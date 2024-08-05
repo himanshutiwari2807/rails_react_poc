@@ -1,0 +1,11 @@
+video{
+    width: 100% !important;
+    height: 500px !important;
+}
+h1{
+    color: red;
+}
+#example_video_1{
+    width: 100% !important;
+    height: 500px;
+}

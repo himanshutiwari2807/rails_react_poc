@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang='en-US' style='height:598px; padding:0; margin:0; background-color:#FFF; display:block; '>
+<head>
+<meta charset='utf-8'>
+<title>Video Popup Window</title>
+<script type="text/javascript">
+
+</script>
+</head>
+<body style='color:#000000; background: #FFFFFF none; margin:0; padding:0; height:100%'>
+
+<script type="text/javascript">
+	var v = "";
+	var vidName = window.opener.videoName;
+	//v += "<div align='center'>";
+	v += "<video controls autoplay>";
+	v += "<source src='video/" + vidName + ".mp4' width='640' height='360' type='video/mp4' controls>";
+	if (sessionStorage.showCC == 1) {
+		v += "<track id="vidTrk" src='video/CC_" + vidName + ".vtt' kind='captions' srclang='en' label='Captions' default>";
+	} else {
+		v += "<track id="vidTrk" src='video/CC_" + vidName + ".vtt' kind='captions' srclang='en' label='Captions'>";
+	}
+	v += "Your browser does not support the video tag.";
+	v += "</video>";
+	//v += "</div>";
+
+	document.write(v);
+</script>
+
+</body>
+</html>

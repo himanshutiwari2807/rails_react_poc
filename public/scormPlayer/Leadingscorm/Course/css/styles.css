@@ -1,0 +1,998 @@
+@charset "utf-8";
+/* CSS Document */
+
+html {
+    margin: 0;
+    padding: 0;
+    max-width: 100%;
+    /* position: relative; */
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    overflow: hidden;
+    background-color: #000000;
+}
+
+/* .bodyText { */
+#contentBody {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: normal;
+    font-style: normal;
+    color: #000000;
+    width: calc(100% - 120px);
+    height: 100%;
+    /* margin: 15px 100px; */
+    padding: 0 60px 0 60px;
+    /* margin-right: 600px; */
+    overflow: auto;
+    float: none;
+    clear: both;
+}
+
+@media only screen and (max-width: 900px) {
+    /* @media only screen and (max-width: 800px) or (max-height: 800px) { */
+    /*#contentBody {
+        padding: 0 20px 0 20px;
+        width: calc(100% - 40px);
+        !* font-size: 0.8em; *!
+    }*/
+
+    /*
+        .rightPanel {
+            margin-left: 0;
+            margin-right: 0;
+            padding: 0;
+            width: calc(50% - 40px);
+        }
+    */
+    #navigationButtons .promptText {
+        font-size: 1.0em;
+    }
+}
+
+#scrollBlock {
+    overflow: auto;
+    display: block;
+    text-align: center;
+    /*min-width: 830px*/
+}
+
+/*@media only screen and (max-width: 900px) {*/
+    /*#scrollBlock {*/
+        /*min-width: 400px*/
+    /*}*/
+/*}*/
+
+.textBlock {
+    margin: 15px 20px;
+    padding: 20px;
+    /*
+    font-size: 1.06em;
+    font-weight: bold;
+    */
+    width: calc(100% - 80px);
+    border-radius: 12px;
+    /* background-color: rgba(255, 255, 255, 0.6); */
+    background-color: rgba(255, 255, 255, 0.9);
+    clear: both;
+}
+
+.headerBlock {
+    margin: 40px 20px 20px 20px;
+    padding: 20px;
+    width: calc(100% - 80px);
+    /*min-width: 830px;*/
+    border-radius: 12px;
+    background-color: rgba(255, 255, 255, 0.9);
+    clear: both;
+}
+
+.textBlock.leftPanel {
+    /*
+    margin-left: 20px;
+    margin-right: 20px;
+    padding: 20px 20px;
+    */
+    float: left;
+    width: calc(50% - 80px);
+    overflow-y: auto;
+    /* max-height: 540px; */
+}
+
+.rightPanel {
+    margin-left: 20px;
+    margin-right: 20px;
+    padding: 20px 20px;
+    width: calc(50% - 80px);
+    float: left;
+    text-align: center;
+}
+
+.clear {
+    float: none;
+    clear: both;
+}
+
+.contentTop {
+    margin: 0;
+    width: 100%;
+    /* height: 90%; */
+    height: calc(100% - 80px);
+    padding: 0;
+    background-image: url(../images/background.jpg);
+    /* background-size: 100%; */
+    /* background-size: cover; */
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-color: #BFC6CE;
+    background-position: center;
+    position: relative;
+    overflow: hidden;
+}
+
+#courseHeader {
+    float: left;
+}
+
+#divProgress {
+    float: right;
+    margin: 10px 30px 0 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: normal;
+    font-style: normal;
+    font-size: 1.2em;
+    /*color: #C1CDDB;*/
+    color: midnightblue;
+}
+
+div.navblock {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    min-height: 80px;
+    white-space: nowrap;
+    /* background-color: #0E2A70; */
+    border-style: none;
+    border-top: 2px solid #279ADD;
+}
+
+h1 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-style: normal;
+    font-size: 1.2em;
+    /*color: #C1CDDB;*/
+    color: midnightblue;
+    margin-top: 10px;
+    margin-left: 30px;
+    margin-bottom: 10px;
+}
+
+.sideNavBar {
+    background-size: 100%;
+    /*background: url(../images/bluebar.png) repeat;*/
+    height: calc(100% - 80px);
+    /*border-color: green;*/
+    /*border-style: dashed;*/
+    /*
+    height: 90%;
+	min-height: 90%;
+	*/
+    z-index:0;
+    width: 60px;
+    position: fixed;
+    top: 0;
+}
+
+#backNavBar {
+    left: 0;
+}
+
+#nextNavBar {
+    right: 0;
+}
+
+.questionChoices td {
+    vertical-align: top;
+    padding-bottom: 10px;
+}
+
+.scenarioBlock {
+    margin-left: 20px;
+    margin-right: 20px;
+    padding: 20px 20px;
+    width: calc(100% - 80px);
+    border-radius: 12px;
+    /* background-color: rgba(255, 255, 255, 0.6); */
+    background-color: rgba(255, 255, 255, 0.75);
+    clear: both;
+    overflow-y: auto;
+    height: 100%;
+}
+
+.scenarioLeftPanel {
+    margin-left: 20px;
+    margin-right: 20px;
+    padding: 20px 20px;
+    width: calc(50% - 80px);
+    /* text-align: center; */
+    clear: both;
+    float: left;
+    border-radius: 12px;
+    background-color: rgba(255, 255, 255, 0.75);
+}
+
+.scenarioRightPanel {
+    font-size: 0.9em;
+    margin-left: 20px;
+    margin-right: 20px;
+    padding: 20px 20px;
+    width: calc(50% - 80px);
+    overflow-y: auto;
+    float: left;
+    border-radius: 12px;
+    background-color: rgba(255, 255, 255, 0.75);
+}
+
+.scenarioLeftPanel video {
+    width: 100%;
+    height: 100%;
+}
+
+#divQuestion {
+    display: none;
+}
+
+ol.responses {
+    list-style-type: upper-alpha;
+    /* margin-left: 10px; */
+    margin-right: 40px;
+}
+
+ol.responses li {
+    margin-bottom: 15px;
+}
+
+video {
+    width: 100%;
+    height: 100%;
+    max-width:640px;
+    max-height:360px;
+}
+
+/*@media only screen and (max-width: 800px) {
+    video {
+        width: 80%;
+        height: 80%;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    video {
+        width: 60%;
+        height: 60%;
+    }
+}*/
+
+/*#audioTranscriptHidden {
+    display: none;
+}
+
+#btnTranscriptID {
+    display: none;
+}*/
+
+a.btnRestart {
+    display: block;
+    width: 174px;
+    height: 26px;
+    background-image: url('../images/restart_scenario_Sprite_174x26.png');
+    background-position: left top;
+    background-size: 174px 52px;
+}
+
+a.btnRestart:hover, a.btnRestart:focus a.btnRestart:active {
+    background-position: left bottom;
+    cursor: pointer;
+}
+
+a.debugSWP {
+    color: #C1CDDB;
+    text-decoration: none;
+}
+
+a.debugSWP, a.debugSWP:hover, a.debugSWP:focus a.debugSWP:active {
+    color: #C1CDDB !important;
+    text-decoration: none;
+}
+
+.promptText {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-style: normal;
+    /* font-size: 1.3em; */
+    color: #277095;
+    /* margin-top: 60px; */
+    text-align: left;
+}
+
+#navigationButtons .promptText {
+    font-weight: normal;
+    font-style: normal;
+    font-size: 1.2em;
+    color: #EEEEEE;
+    margin-top: 5px;
+    text-align: center;
+}
+
+.popupLink {
+}
+
+#userTextInput {
+    width: calc(100% - 20px);
+    font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+    font-size: 0.9em;
+    padding: 8px;
+}
+
+img {
+    height: auto;
+    max-width: 100%;
+    border: none;
+}
+
+ul li {
+    margin-bottom: 15px;
+}
+
+/* Buttons */
+a.btnBack {
+    display: block;
+    position: fixed;
+    left: 0;
+    top: 40vh;
+    width: 60px;
+    height: 80px;
+    background-image: url('../images/sprite_Next.png');
+    background-repeat: no-repeat;
+    background-position: left top;
+    background-size: 60px 240px;
+    -ms-transform: scaleX(-1); /* IE 9 */
+    -webkit-transform: scaleX(-1); /* Chrome, Safari, Opera */
+    transform: scaleX(-1);
+}
+
+a.btnBack:hover, a.btnBack:focus {
+    background-position: left center;
+    cursor: pointer;
+}
+
+a.btnBack:active {
+    background-position: right top;
+    cursor: pointer;
+}
+
+a.btnBackDim {
+    display: block;
+    position: fixed;
+    left: 0;
+    top: 40vh;
+    width: 60px;
+    height: 80px;
+    background-image: url('../images/sprite_Next.png');
+    background-repeat: no-repeat;
+    background-position: left bottom;
+    background-size: 60px 240px;
+    cursor: default;
+    -ms-transform: scaleX(-1); /* IE 9 */
+    -webkit-transform: scaleX(-1); /* Chrome, Safari, Opera */
+    transform: scaleX(-1);
+}
+
+a.btnNext {
+    display: block;
+    position: fixed;
+    right: 0;
+    top: 40vh;
+    width: 60px;
+    height: 80px;
+    background-image: url('../images/sprite_Next.png');
+    background-repeat: no-repeat;
+    background-position: left top;
+    background-size: 60px 240px;
+}
+
+a.btnNext:hover, a.btnNext:focus {
+    background-position: left center;
+    cursor: pointer;
+}
+
+a.btnNext:active {
+    background-position: right top;
+    cursor: pointer;
+}
+
+a.btnNextDim {
+    display: block;
+    position: fixed;
+    right: 0;
+    top: 40vh;
+    width: 60px;
+    height: 80px;
+    background-image: url('../images/sprite_Next.png');
+    background-repeat: no-repeat;
+    background-position: left bottom;
+    background-size: 60px 240px;
+    cursor: default;
+}
+
+a.btnComputer {
+    display: block;
+    position: fixed;
+    right: 0;
+    top: 40vh;
+    width: 132px;
+    height: 104px;
+    background-image: url('../images/sprite_PC.png');
+    background-repeat: no-repeat;
+    background-position: left top;
+    background-size: 132px 208px;
+}
+
+a.btnComputer:hover, a.btnComputer:focus {
+    background-position: left bottom;
+    cursor: pointer;
+}
+
+a.btnComputerDim {
+    visibility: hidden;
+}
+
+a.btnPhone {
+    display: block;
+    position: fixed;
+    right: 0;
+    top: 40vh;
+    width: 132px;
+    height: 104px;
+    background-image: url('../images/sprite_Phone.png');
+    background-position: left top;
+    background-size: 132px 208px;
+}
+
+a.btnPhone:hover, a.btnPhone:focus {
+    background-position: left bottom;
+    cursor: pointer;
+}
+
+a.btnPhoneDim {
+    visibility: hidden;
+}
+
+a.btnIndex {
+    display: block;
+    float: left;
+    width: 85px;
+    height: 35px;
+    background-image: url(../images/NPSbuttons_index.png);
+    background-position: left top;
+    vertical-align: middle;
+}
+
+a.btnIndex:hover {
+    background-position: left bottom;
+    cursor: pointer;
+}
+
+a.btnIndex:active {
+    background-position: right top;
+    cursor: pointer;
+}
+
+a.btnExit {
+    display: block;
+    width: 40px;
+    height: 30px;
+    margin-right: 52px;
+    background-image: url(../images/exit_Sprite_60x40.png);
+    background-position: left top;
+    background-size: 40px 60px;
+    float: right;
+}
+
+a.btnExit:hover, a.btnExit:focus {
+    background-position: left bottom;
+    cursor: pointer;
+}
+
+a.btnResources {
+    display: block;
+    width: 103px;
+    height: 30px;
+    margin-right: 52px;
+    background-image: url(../images/resources_Sprite_60x103.png);
+    background-position: left top;
+    background-size: 103px 60px;
+    float: right;
+}
+
+a.btnResources:hover, a.btnResources:focus {
+    background-position: left bottom;
+    cursor: pointer;
+}
+
+a.btnHelp {
+    display: block;
+    width: 44px;
+    height: 30px;
+    margin-right: 52px;
+    background-image: url(../images/help_Sprite_60x44.png);
+    background-position: left top;
+    background-size: 44px 60px;
+    float: right;
+}
+
+a.btnHelp:hover, a.btnHelp:focus {
+    background-position: left bottom;
+    cursor: pointer;
+}
+
+a.btnAudio {
+    display: block;
+    width: 84px;
+    height: 30px;
+    margin-right: 52px;
+    background-image: url(../images/Audio_Sprite_60x168.png);
+    background-position: left bottom;
+    float: right;
+}
+
+a.btnAudio:hover, a.btnAudio:focus {
+    background-position: left top;
+    cursor: pointer;
+}
+
+a.btnAudio.off {
+    background-position: right bottom;
+}
+
+a.btnAudio.off:hover, a.btnAudio.off:focus {
+    background-position: right top;
+}
+
+a.btnCC {
+    display: block;
+    width: 30px;
+    height: 30px;
+    margin-right: 52px;
+    background-image: url(../images/cc_Sprite_60x30.png);
+    background-position: left top;
+    background-size: 30px 60px;
+    float: right;
+}
+
+a.btnCC:hover, a.btnCC:focus {
+    background-position: left bottom;
+    cursor: pointer;
+}
+
+a.btnTranscript {
+    display: block;
+    width: 92px;
+    height: 30px;
+    margin-right: 52px;
+    background-image: url('../images/transcript_Sprite_60x92.png');
+    background-position: left top;
+    background-size: 92px 60px;
+    float: right;
+}
+
+a.btnTranscript:hover, a.btnTranscript:focus {
+    background-position: left bottom;
+    cursor: pointer;
+}
+
+#userResponse {
+    text-align: left;
+}
+
+/*------------------------------------------*/
+
+h2 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-style: normal;
+    font-size: 1.2em;
+    color: #0051A2;
+    margin: 0;
+}
+
+a:link {
+    color: #0066FF;
+}
+
+a:visited {
+    color: #4069b2;
+}
+
+a:hover, a:focus {
+    /*color: #ff9900;*/
+    color: #33CC00;
+    text-decoration: underline;
+}
+
+.CC_text {
+    font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+    font-weight: normal;
+    font-style: normal;
+    font-size: 0.9em;
+    color: #5b636b;
+}
+
+#popupTitle {
+    font-weight: bold;
+    font-size: 1.3em;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    margin: 20px 0 15px 0;
+}
+
+#popupText {
+    margin: 0 20px 18px 20px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#printText {
+    margin: 0 20px 18px 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.9em;
+}
+
+#debug {
+    color: black;
+    height: 20px;
+}
+
+#ContentReviewDiv {
+    margin-left: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    color: #C1CDDB;
+}
+
+a.btnClose {
+    display: block;
+    width: 96px;
+    height: 31px;
+    background-image: url('../images/btnSprite_Close_96x31.png');
+    background-position: top;
+}
+
+a.btnClose:hover {
+    background-position: center;
+    cursor: pointer;
+}
+
+a.btnHelpClose {
+    display: block;
+    position: absolute;
+    left: 85px;
+    top: 110px;
+    width: 94px;
+    height: 36px;
+    background-image: url('../images/btnSprite_Close_94x36.png');
+    background-position: top;
+}
+
+a.btnHelpClose:hover {
+    background-position: center;
+    cursor: pointer;
+}
+
+/*a.btnSubmit {
+    display: block;
+    width: 86px;
+    height: 30px;
+    background-image: url('../images/Submit_up.png');
+}
+
+a.btnSubmit:hover {
+    background-image: url('../images/Submit_ov.png');
+    cursor: pointer;
+}*/
+
+a.btnDecide {
+    display: block;
+    width: 100px;
+    height: 47px;
+    background-image: url("../images/sprite_decide.png");
+    background-position: top;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+a.btnDecide:hover {
+    background-position: center;
+}
+
+a.transcript {
+    color: #E6E7E8;
+    padding-bottom: 18px;
+}
+
+.insideText {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: normal;
+    font-style: normal;
+    font-size: 1.1em;
+    margin: 5px 50px 0 50px;
+    color: #000;
+    text-align: left;
+}
+
+.choiceText {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: normal;
+    font-style: normal;
+    font-size: 1.1em;
+    margin: 5px 50px 0 10px;
+    color: #000;
+    text-align: left;
+}
+
+#leadText1 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: normal;
+    font-style: normal;
+    font-size: 1.1em;
+    margin: 0 5px 0 10px;
+    color: #000;
+    text-align: left;
+}
+
+#leadText2 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: normal;
+    font-style: normal;
+    font-size: 1.1em;
+    margin: 10px 5px 0 10px;
+    /*color: #5b636b;*/
+    color: #000;
+    text-align: left;
+    /*position:absolute;
+    top:87px;*/
+}
+
+div.transcrText {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    margin: 10px 40px 20px 40px;
+}
+
+/* Office Items */
+#PC_sprite {
+    width: 609px;
+    height: 392px;
+    background-image: url(../imagesLsn/PC_lg.png);
+    position: absolute;
+    left: 287px;
+    top: 20px;
+}
+
+#phone_sprite {
+    width:93px; height:143px; background-image: url(../imagesLsn/Phone.png); position:absolute; left:211px; top:250px;
+}
+
+#email_content {
+    width:449px; height:253px; border-width:1px; border-style: solid; border-color:red; position:absolute; left:351px; top:40px; text-align: left; font-size:0.75em; display: none; background-color:whitesmoke; cursor:pointer; overflow: auto; padding:5px;
+}
+
+#email_content2 {
+    width:414px; height:148px; position:absolute; left:351px; top:138px; text-align: left; font-size:0.75em; display: none; overflow: auto; margin:0 0 2px 25px;
+}
+
+#email_to {
+    position:absolute; left:482px; top:53px; text-align: left; font-size:0.75em;
+}
+
+#email_from {
+    position:absolute; left:495px; top:67px; text-align: left; font-size:0.75em;
+}
+
+#email_subject {
+    position:absolute; left:506px; top:94px; text-align: left; font-size:0.75em;
+}
+
+#email_sprite,#email_sprite2,#email_sprite3,#email_sprite4 {
+    width:153px; height: 36px; background-image: url(../imagesLsn/LC0340_email.png); position: absolute; left:655px; top:45px; display:none; z-index: 1; cursor:pointer;
+}
+
+#woman_sprite {
+    width:83px; height:201px; background-image: url(../imagesLsn/female_door.png); position:absolute; left:93px; top:71px; cursor:pointer; display: none
+}
+
+#text_msg {
+    width: 258px; height: 522px; background-image: url(../imagesLsn/Phone_Zoom.png); position: absolute; left:201px; top:0; display: none; cursor: zoom-in; z-index: 1
+}
+
+#clock_sprite {
+    width:175px; height: 175px; background-image: url('../imagesLsn/clock_fast_times.gif'); position:absolute; left:10px; top:10px; display: none;
+}
+
+#paper_stack {
+    width: 198px; height:130px; background-image: url(../imagesLsn/Papers_Stack.png); background-position:0 130px; position:absolute; display: none; left:15px; top: 280px;
+}
+
+#instant_msg {
+    width: 260px; height: 400px; background-image: url(../imagesLsn/LC0390_instantMsg.png); position: absolute; left:450px; top:25px; display: none; z-index: 1
+} /*LC0390*/
+
+#instant_msg_sm {
+    width: 100px; height: 154px; background-image: url(../imagesLsn/LC0390_instantMsg_sm.png); position: absolute; left:707px; top:45px; cursor:pointer; display: none; z-index: 1
+} /*LC0390*/
+
+#officeFrame {
+    position:relative; width:900px; height:430px; background-image: url(../imagesLsn/Office.png); margin-left:auto; margin-right:auto;
+}
+
+#calendarGif {
+    width:387px; height:232px; position:absolute; top:53px; left:412px; display: none;
+}
+
+/* end of Office Items */
+
+@media only screen and (max-width: 1005px) {
+    #PC_sprite {
+        width: 457px;
+        height: 294px;
+        background-image: url(../imagesLsn/PC_lg.png);
+        background-size: 457px 294px;
+        position: absolute;
+        left: 215px;
+        top: 15px;
+    } /*reduced*/
+
+    #phone_sprite {
+        width:70px; height:107px; background-image: url(../imagesLsn/Phone.png); background-size: 70px 107px; position:absolute; left:158px; top:188px;
+    } /*reduced*/
+
+    #email_content {
+        width:337px; height:190px; border-width:1px; border-style: solid; border-color:red; position:absolute; left:263px; top:30px; text-align: left; font-size:0.75em; display: none; background-color:whitesmoke; background-size: 337px 190px; cursor:pointer; overflow: auto; padding:5px;
+    } /*reduced*/
+
+    #email_content2 {
+        width:310px; height:111px; position:absolute; left:263px; top:104px; text-align: left; font-size:0.75em; display: none; overflow: auto; margin:0 0 2px 22px;
+    } /*reduced*/
+
+    #email_to {
+        position:absolute; left:362px; top:40px; text-align: left; font-size:0.75em;
+    } /*reduced*/
+
+    #email_from {
+        position:absolute; left:371px; top:50px; text-align: left; font-size:0.75em;
+    } /*reduced*/
+
+    #email_subject {
+        position:absolute; left:380px; top:71px; text-align: left; font-size:0.75em;
+    } /*reduced*/
+
+    #email_sprite,#email_sprite2,#email_sprite3,#email_sprite4 {
+        width:115px; height: 27px; background-image: url(../imagesLsn/LC0340_email.png); background-size: 115px 27px; position: absolute; left:491px; top:34px; display:none; z-index: 1; cursor:pointer;
+    } /*reduced*/
+
+    #woman_sprite {
+        width:62px; height:151px; background-image: url(../imagesLsn/female_door.png); background-size: 62px 151px; position:absolute; left:70px; top:53px; cursor:pointer; display: none
+    } /*reduced*/
+
+    #text_msg {
+        width: 194px; height: 392px; background-image: url(../imagesLsn/Phone_Zoom.png); background-size: 194px 392px; position: absolute; left:151px; top:0; display: none; cursor: zoom-in; z-index: 1
+    } /*reduced*/
+
+    #clock_sprite {
+        width:131px; height: 131px; background-image: url('../imagesLsn/clock_fast_times.gif'); background-size: 131px 131px; position:absolute; left:8px; top:8px; display: none;
+    } /*reduced*/
+
+    #paper_stack {
+        width: 149px; height:98px; background-image: url(../imagesLsn/Papers_Stack.png); background-position:0 130px; background-size: 149px 98px; position:absolute; display: none; left:11px; top: 210px;
+    } /*reduced*/
+
+    #instant_msg {
+        width: 195px; height: 300px; background-image: url(../imagesLsn/LC0390_instantMsg.png); background-size: 195px 300px; position: absolute; left:338px; top:19px; display: none; z-index: 1
+    } /*LC0390*/
+
+    #instant_msg_sm {
+        width: 75px; height: 116px; background-image: url(../imagesLsn/LC0390_instantMsg_sm.png); background-size: 75px 116px; position: absolute; left:530px; top:34px; cursor:pointer; display: none; z-index: 1
+    } /*LC0390*/
+
+    #officeFrame {
+        position:relative; width:675px; height:322px; background-image: url(../imagesLsn/Office.png); background-size: 675px 322px; margin-left:auto; margin-right:auto;
+    } /*reduced*/
+
+    #calendarGif {
+        width:290px; height:174px; position:absolute; top:40px; left:309px; display: none;
+    }
+
+    #contentBody {
+        padding: 0 20px 0 20px;
+        width: calc(100% - 40px);
+        /* font-size: 0.8em; */
+    }
+}
+
+/*
+@media only screen and (max-width: 700px) {
+
+    #PC_sprite {
+        width: 304px;
+        height: 196px;
+        background-image: url(../imagesLsn/PC_lg.png);
+        background-size: 304px 196px;
+        position: absolute;
+        left: 143px;
+        top: 10px;
+    }
+
+    #phone_sprite {
+        width:46px; height:71px; background-image: url(../imagesLsn/Phone.png); background-size: 46px 71px; position:absolute; left:105px; top:125px;
+    }
+
+    #email_content {
+        width:449px; height:253px; border-width:1px; border-style: solid; border-color:red; position:absolute; left:351px; top:40px; text-align: left; font-size:0.75em; display: none; background-color:whitesmoke; cursor:pointer; overflow: auto; padding:5px;
+    }
+
+    #email_content2 {
+        width:415px; height:148px; position:absolute; left:351px; top:138px; text-align: left; font-size:0.75em; display: none; overflow: auto; margin:0 0 2px 25px;
+    }
+
+    #email_to {
+        position:absolute; left:482px; top:53px; text-align: left; font-size:0.75em;
+    }
+
+    #email_from {
+        position:absolute; left:495px; top:67px; text-align: left; font-size:0.75em;
+    }
+
+    #email_subject {
+        position:absolute; left:506px; top:94px; text-align: left; font-size:0.75em;
+    }
+
+    #email_sprite,#email_sprite2,#email_sprite3,#email_sprite4 {
+        width:153px; height: 36px; background-image: url(../imagesLsn/LC0340_email.png); position: absolute; left:655px; top:45px; display:none; z-index: 1; cursor:pointer;
+    }
+
+    #woman_sprite {
+        width:83px; height:201px; background-image: url(../imagesLsn/female_door.png); position:absolute; left:93px; top:71px; cursor:pointer; display: none
+    }
+
+    #text_msg {
+        width: 258px; height: 522px; background-image: url(../imagesLsn/Phone_Zoom.png); position: absolute; left:201px; top:0; display: none; cursor: zoom-in; z-index: 1
+    }
+
+    #clock_sprite {
+        width:175px; height: 175px; background-image: url('../imagesLsn/clock_fast_times.gif'); position:absolute; left:10px; top:10px; display: none;
+    }
+
+    #paper_stack {
+        width: 198px; height:130px; background-image: url(../imagesLsn/Papers_Stack.png); background-position:0 130px; position:absolute; display: none; left:15px; top: 280px;
+    } !*LC0340*!
+
+    #instant_msg {
+        width: 260px; height: 400px; background-image: url(../imagesLsn/LC0390_instantMsg.png); position: absolute; left:450px; top:25px; display: none; z-index: 1
+    } !*LC0390*!
+
+    #instant_msg_sm {
+        width: 100px; height: 154px; background-image: url(../imagesLsn/LC0390_instantMsg_sm.png); position: absolute; left:707px; top:45px; cursor:pointer; display: none; z-index: 1
+    } !*LC0390*!
+
+    #officeFrame {
+        position:relative; width:450px; height:215px; background-image: url(../imagesLsn/Office.png); background-size: 450px 215px; margin-left:auto; margin-right:auto;
+    }
+
+    #navigationButtons .promptText {
+        font-size: 1.0em;
+    }
+}*/

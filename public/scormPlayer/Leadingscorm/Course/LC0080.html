@@ -1,0 +1,139 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Leading Change</title>
+	<link rel="stylesheet" type="text/css" href="css/styles.css">
+
+	<script type="text/javascript" src="javascript/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="javascript/jquery-ui.js"></script>
+	<script type="text/javascript" src="javascript/main.js"></script>
+	<script type="text/javascript">
+		pageNext = "LC0100";
+		pageBack = "LC0060";
+		nextActive = false;
+		backActive = true;
+
+		var eventSeq = 0;
+		var popupHeader = "";
+		var popupText = "";
+
+		$(document).ready(function () {
+			setTimeout(function () {
+				enterPage();
+				window.setTimeout(function () {
+					$("#audio00").trigger("play");
+				}, 500);
+			}, 50);
+
+			$("#audio00").on({
+				"ended": function () {
+					//$("#woman_sprite").show();
+					$("#audio01").trigger("play");
+					$("#email_sprite").css("background-image", "url(imagesLsn/LC0080_email.png)").show("slide", {direction: "right"}, function(){
+						$("#prompt_text").html("Select the computer to view the email.");
+						$("#PC_sprite").css("cursor","pointer");
+					});
+				}
+			});
+
+			$(".officeItem").on("click", function (event) {
+				var cTarget = event.target.id;
+				switch (cTarget) {
+					case "PC_sprite":
+				case "email_sprite":
+						if (eventSeq == 0) {
+							popupText = "Hi.<br><br>So glad to be a part of this working group! The project is so broad and has so many moving parts—this is a great way to make sure we all stay informed and on track. If you need anything from me, just let me know.<br><br>Thanks,<br>John";
+//							startPopUp3(popupHeader, popupText, 550, 400);
+
+							$("#PC_sprite").css("background-image", "url(imagesLsn/PC_e-mail_john.png)");
+							$("#email_content2").html(popupText).show();
+							$("#email_to").text("You");
+							$("#email_from").text("John");
+							$("#email_subject").text("HRIT Working Group");
+							$("#email_sprite").hide();
+							$("#prompt_text").html("&nbsp;");
+
+							window.setTimeout(function () {
+								activateNext();
+							}, 1000);
+						}
+						break;
+				}
+				return false;
+			});
+		});
+
+		function enterPageLocal() {
+		}
+	</script>
+</head>
+<body>
+<div class="contentTop">
+	<div id="contentBody"><h1 id="courseHeader"></h1>
+
+		<div id="divProgress"></div>
+
+		<div class="headerBlock"><h2>The Outcome</h2>
+
+			<!--<div id="leadText1"><strong>Your choice:</strong> Create an email distribution list to keep key stakeholders informed.</div>-->
+			<!--<div id="leadText2">xxxxxxxxxxxxxx</div>-->
+		</div>
+
+		<div id="scrollBlock" class="textBlock">
+
+			<div id="officeFrame">
+				<div id="PC_sprite" class="officeItem"></div>
+
+				<div id="email_sprite" class="officeItem"></div>
+				<div id="phone_sprite" class="officeItem" ></div>
+				<div id="woman_sprite" class="officeItem"></div>
+
+				<div id="email_to" class="officeItem"></div>
+				<div id="email_from" class="officeItem"></div>
+				<div id="email_subject" class="officeItem"></div>
+				<div id="email_content2" class="officeItem"></div>
+				<div id="text_msg" class="officeItem"></div>
+			</div>
+			<div id="videoFrame" style="display: none; text-align: center;">
+				<video controls preload="auto">
+					<source id="vidSrc" src="video/LC_xxxx.mp4" type="video/mp4">
+					<track id="vidTrk" src='video/CC_LC_xxxx.vtt' kind='subtitles' srclang='en' label='English'>
+				</video>
+				<p id="placeholderNote" style="text-align: center">This is a placeholder video.</p>
+			</div>
+			<div id="placeholderFrame" style="display: none; text-align: center; height:220px">
+				<p style="margin-top:130px; font-size:2em">A video will be placed here.</p>
+			</div>
+
+			<audio id="audio00">
+				<source src="audio/LC0070_Narrator.mp3">
+			</audio>
+			<audio id="audio01">
+				<source src="audio/email_1.mp3">
+			</audio>
+			<audio id="audio02">
+				<source src="audio/iPhone_SFX1.mp3">
+			</audio>
+			<audio id="audio03">
+				<source src="audio/Knocking.mp3">
+			</audio>
+		</div>
+	</div>
+</div>
+<div id="navigationButtons">
+	<nav>
+		<div id="nextNavBar" class="sideNavBar"><a href="javascript:void(0);" id="btnNextID" class="btnNext" title="Next"></a></div>
+		<div id="backNavBar" class="sideNavBar"><a href="javascript:void(0);" id="btnBackID" class="btnBack" title="Back"></a></div>
+		<div class="navblock">
+			<p class="promptText" id="prompt_text" align="center">&nbsp;</p>
+			<span id="ContentReviewDiv" style="display:none;float:left;"></span>
+
+			<div id="bottomButtons"></div>
+		</div>
+	</nav>
+</div>
+</body>
+</html>

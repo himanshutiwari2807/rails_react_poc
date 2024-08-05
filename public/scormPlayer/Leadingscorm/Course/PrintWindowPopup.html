@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang='en-US' style='height:598px; padding:0; margin:0; background-color:#FFF; display:block; '>
+<head>
+<meta charset='utf-8'>
+<title>Print Window</title>
+<link href='css/styles.css' rel='stylesheet' type='text/css' />
+<script type="text/javascript">
+	function printMe() {
+		var txt = window.opener.bodyText;
+		document.getElementById("printText").innerHTML = txt;
+		window.print();
+		if (navigator.userAgent.indexOf("Chrome") < 0) self.close();
+	}
+</script>
+</head>
+<body style='background-color:#FFFFFF; color:#000000; background-image:none; margin:0; padding:0; height:100%' onload='printMe();'>
+	<div id='printText'></div>
+</body>
+</html>

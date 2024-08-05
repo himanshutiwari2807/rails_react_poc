@@ -1,0 +1,134 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Leading Change</title>
+	<link rel="stylesheet" type="text/css" href="css/styles.css">
+
+	<script type="text/javascript" src="javascript/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="javascript/main.js"></script>
+	<script type="text/javascript">
+		pageNext = "";
+		pageBack = "LC0220";
+		nextActive = false;
+		backActive = true;
+
+		$(document).ready(function () {
+			setTimeout(function () {
+				enterPage();
+				parent.choice_0220 = "A";
+				window.setTimeout(function () {
+					if (parent.secondAudio) {
+						$("#audio02").trigger("play");
+						parent.secondAudio = false;
+					} else {
+						$("#audio00").trigger("play");
+					}
+				}, 500);
+			}, 50);
+			$("#buttonDecide").on("click", function(){
+				
+				var cTarget = $('input[name=q1]:checked', '#toDecide').val();
+				switch (cTarget) {
+					case "c01":
+						document.location.href = "LC0290.html";
+						break;
+					case "c02":
+						document.location.href = "LC0300.html";
+						break;
+					case "c03":
+						document.location.href = "LC0310.html";
+						break;
+				}
+			});
+		});
+
+		function enterPageLocal() {
+		}
+
+	</script>
+	<style type="text/css">
+		input[type=radio] {
+			float: left;
+			margin-top: 7px;
+			padding-left:5px;
+			position: relative;
+			left: 2px;
+			transform: scale(1.5);
+		}
+
+		label {
+			display: block;
+			padding-left: 38px;
+		}
+
+		ul {
+			margin:0; padding:0;
+		}
+
+		.scrImage {
+			width: 520px;
+			height: 360px;
+			float: right;
+			margin-left:30px;
+		}
+
+		@media only screen and (max-width: 1005px) {
+			.scrImage {
+				width: 390px;
+				height: 270px;
+			}
+		}
+	</style>
+</head>
+<body>
+<div class="contentTop">
+	<div id="contentBody"><h1 id="courseHeader"></h1>
+
+		<div id="divProgress"></div>
+
+		<div class="headerBlock"><h2>Time to Decide</h2>
+
+			<!--<div id="leadText1" class="insideText">Unfortunately, it appears your efforts to dispel the rumors were too little, too late. They’ve reached the Deputy Secretary, and he has confided in Shannon that he’s losing confidence in your ability to manage this project. He wants to speak with you as soon as possible, so make sure you are prepared when he calls.</div>-->
+			<!--<div id="leadText2">How do you prepare for the call with the Deputy Secretary?</div>-->
+		</div>
+		<div id="scrollBlock" class="textBlock">
+
+			<img class="scrImage" src="imagesLsn/LC0280.png" alt="Deputy Secretary James">
+
+			<div class="choiceText">
+				<form id="toDecide">
+				<ul style="list-style-type:none">
+					<li><input type="radio" id="c01" value="c01" name="q1"><label for="c01"> Develop a strategy for the meeting and spend time compiling a list of key points that demonstrate your progress. Include relevant research and data to make your case.</label></li>
+					<li><input type="radio" id="c02" value="c02" name="q1"><label for="c02"> Spend time thinking about your past accomplishments, the challenges you’ve overcome, and how you can apply those lessons to your current situation.</label></li>
+					<li><input type="radio" id="c03" value="c03" name="q1"><label for="c03"> Create a metrics dashboard comparing the progress of your office to other offices in your department—you know this will be a quick win.</label></li>
+					<li style="width:50%"><a href="javascript:void(0);" id="buttonDecide" class="btnDecide" title="Decide"></a></li>
+				</ul>
+					</form>
+				<audio id="audio00">
+					<source src="audio/LC0280_Narrator.mp3">
+				</audio>
+				<audio id="audio02">
+					<source src="audio/LC0220_Narrator_2.mp3">
+				</audio>
+			</div>
+		</div>
+	</div>
+</div>
+<div id="navigationButtons">
+	<nav>
+		<div id="nextNavBar" class="sideNavBar"><a href="javascript:void(0);" id="btnNextID" class="btnNext" title="Next"></a></div>
+		<div id="backNavBar" class="sideNavBar"><a href="javascript:void(0);" id="btnBackID" class="btnBack" title="Back"></a></div>
+		<div class="navblock">
+			<p class="promptText" id="prompt_text" align="center">Select a response.</p>
+			<span id="ContentReviewDiv" style="display:none;float:left;"></span>
+
+
+			<div id="bottomButtons"></div>
+		</div>
+	</nav>
+</div>
+</body>
+</html>

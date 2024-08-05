@@ -1,0 +1,129 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Leading Change</title>
+	<link rel="stylesheet" type="text/css" href="css/styles.css">
+
+	<script type="text/javascript" src="javascript/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="javascript/main.js"></script>
+	<script type="text/javascript">
+		pageNext = "LC0280";
+		pageBack = "LC0280";
+		nextActive = false;
+		backActive = true;
+
+		var eventSeq = 0;
+		var popupHeader = "";
+		var popupText = "";
+
+		$(document).ready(function () {
+			setTimeout(function () {
+				enterPage();
+				parent.secondAudio = true;
+			}, 50);
+
+			$("#audio02").on({
+				"ended": function () {
+					$("#phone_sprite").css({"background-image":"url(imagesLsn/Phone.png)"});
+					window.setTimeout(function () {
+						$("#audio03").trigger("play");
+						$("#prompt_text").html("Select the phone to read a text message from Lisa.");
+						$("#phone_sprite").css({"cursor": "pointer","background-image":"url(imagesLsn/Phone_msg.png)"});
+						eventSeq = 1;
+					}, 2000);
+				}
+			});
+
+			$(".officeItem").on("click", function (event) {
+				var cTarget = event.target.id;
+				switch (cTarget) {
+					case "phone_sprite":
+//					case "email_sprite":
+						if (eventSeq == 0) {
+							$("#audio02").trigger("play");
+							$("#prompt_text").html("&nbsp;");
+							$("#phone_sprite").css({"cursor": "default", "background-image": "url(imagesLsn/Phone_On_call.png)"});
+						}
+						if (eventSeq >= 1) {
+							$("#prompt_text").html("&nbsp;");
+							$("#scrollBlock").css("min-height","520px");
+							$("#text_msg").css("background-image", "url(imagesLsn/LC0310_phoneMsg.png)").show();
+							window.setTimeout(function () {
+								activateNext("Select Next to return to the moment of decision, and take a different approach.");
+							}, 2500);
+						}
+						break;
+				}
+				return false;
+			});
+			$("#phone_sprite").css({"cursor":"pointer","background-image":"url(imagesLsn/Phone_on.png)"});
+		});
+
+		function enterPageLocal() {
+		}
+	</script>
+</head>
+<body>
+<div class="contentTop">
+	<div id="contentBody"><h1 id="courseHeader"></h1>
+
+		<div id="divProgress"></div>
+
+		<div class="headerBlock"><h2>The Outcome</h2>
+
+			<!--<div id="leadText1"><strong>Your choice:</strong> Create a metrics dashboard comparing the progress of your office against other offices in your department—you know this will be a quick win.</div>-->
+			<!--<div id="leadText2">xxxxxxxxxxxxxx</div>-->
+		</div>
+
+		<div id="scrollBlock" class="textBlock">
+
+			<div id="officeFrame">
+				<div id="PC_sprite" class="officeItem"></div>
+
+				<div id="email_sprite" class="officeItem"></div>
+				<div id="phone_sprite" class="officeItem" ></div>
+				<div id="woman_sprite" class="officeItem"></div>
+
+				<div id="email_content" class="officeItem">&nbsp;</div>
+				<div id="text_msg" class="officeItem"></div>
+			</div>
+			<div id="videoFrame" style="display: none; text-align: center;">
+				<video controls preload="auto">
+					<source id="vidSrc" src="video/LC_xxxx.mp4" type="video/mp4">
+					<track id="vidTrk" src='video/CC_LC_xxxx.vtt' kind='subtitles' srclang='en' label='English'>
+				</video>
+				<p id="placeholderNote" style="text-align: center">This is a placeholder video.</p>
+			</div>
+			<div id="placeholderFrame" style="display: none; text-align: center; height:220px">
+				<p style="margin-top:130px; font-size:2em">A video will be placed here.</p>
+			</div>
+
+			<audio id="audio01">
+				<source src="audio/iPhone_SFX2.mp3">
+			</audio>
+			<audio id="audio02">
+				<source src="audio/LC0310_Phone.mp3">
+			</audio>
+			<audio id="audio03">
+				<source src="audio/iPhone_SFX1.mp3">
+			</audio>
+		</div>
+	</div>
+</div>
+<div id="navigationButtons">
+	<nav>
+		<div id="nextNavBar" class="sideNavBar"><a href="javascript:void(0);" id="btnNextID" class="btnNext" title="Next"></a></div>
+		<div id="backNavBar" class="sideNavBar"><a href="javascript:void(0);" id="btnBackID" class="btnBack" title="Back"></a></div>
+		<div class="navblock">
+			<p class="promptText" id="prompt_text" align="center">Select the phone to call the Deputy Secretary.</p>
+			<span id="ContentReviewDiv" style="display:none;float:left;"></span>
+
+			<div id="bottomButtons"></div>
+		</div>
+	</nav>
+</div>
+</body>
+</html>

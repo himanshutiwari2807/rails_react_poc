@@ -6,6 +6,7 @@ import CourseContent from "./CourseContent";
 const CoursePlayer = () => {
   const [content, setContent] = useState(null);
 
+
   const handleContentChange = (newContent) => {
     // Set the URL to access files in the public folder
     setContent(`/content/${newContent}`);

@@ -1,0 +1,159 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Leading Change</title>
+	<link rel="stylesheet" type="text/css" href="css/styles.css">
+
+	<script type="text/javascript" src="javascript/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="javascript/main.js"></script>
+	<script type="text/javascript">
+		pageNext = "LC0530";
+		pageBack = "LC0480"; //this may vary
+		nextActive = false;
+		backActive = true;
+
+		$(document).ready(function () {
+			setTimeout(function () {
+				enterPage();
+				window.setTimeout(function () {
+					$("#audio00").trigger("play");
+				}, 500);
+			}, 50);
+			$("#submit").on("click", function () {
+				if ($("input[type=checkbox]:checked").length == 0) {
+				alert("Please select some items.");
+					return false;
+			}
+				$("input[type=checkbox]").each(function(index){
+					if (this.checked) {
+						$("#s0"+ (index+1).toString()).show();
+					}
+				});
+				activateNext();
+				/*for (var i = 1; i <= 10; i++) {
+					var x, z;
+					x = $("input[type=checkbox]")[i];
+					{
+						if ($("x:checked")) {
+							alert(i);
+							$("#s0"+ i.toString()).show();
+						}
+					}
+				}*/
+			});
+			//$("audio").trigger("play");
+		});
+
+		function enterPageLocal() {
+		}
+
+	</script>
+	<style type="text/css">
+		input[type=checkbox] {
+			float: left;
+			margin-top: 2px;
+			padding-left: 5px;
+			position: relative;
+			left: 2px;
+			transform: scale(1.5);
+		}
+
+		label {
+			display: block;
+			padding-left: 38px;
+		}
+
+		ul {
+			margin: 0;
+			padding: 0;
+		}
+
+		.btnSubmit {
+			display: block;
+			width: 100px;
+			height: 47px;
+			background-image: url(images/sprite_submit.png);
+			background-position: top;
+			border: none;
+			margin-left: auto;
+			margin-right: auto;
+		}
+
+		.btnSubmit:hover {
+			background-position: center;
+		}
+
+		ul li {
+			margin-bottom: 8px;
+		}
+
+		.fdbkG {
+			/*background-color: #33CC00;*/
+			color: #33CC00;
+			font-weight: bold;
+			font-style: italic;
+		}
+
+		.fdbkF {
+			/*background-color: yellow;*/
+			color: orange;
+			font-weight: bold;
+			font-style: italic;
+		}
+
+	</style>
+</head>
+<body>
+<div class="contentTop">
+	<div id="contentBody"><h1 id="courseHeader"></h1>
+
+		<div id="divProgress"></div>
+
+		<div class="headerBlock"><h2>End of the Project</h2>
+
+			<!--<div id="leadText1" class="insideText">You are now nearing the end of your project. Throughout this effort, you have witnessed firsthand the benefits of fostering collaboration and building partnerships. Without the support of your colleagues, you wouldn’t have been able to accomplish this task in such a short timeframe. As the HRIT System enters its final phases, you begin to think about how you will sustain this change and continue the momentum to support an innovative and efficient organization.</div>-->
+			<!--<div id="leadText2">How will you sustain the change? (Select all that apply.)</div>-->
+		</div>
+		<div id="scrollBlock" class="textBlock">
+
+			<img src="imagesLsn/LC0330.png" width="514" height="343" alt="Shannon" style="float: right; margin-left:30px;">
+
+			<div class="choiceText">
+				<ul style="list-style-type:none">
+					<li><input type="checkbox" id="c01" name="q1"><label for="c01"> Partner with your Office of Communications to develop a plan to communicate information about the new system. <span class="fdbkG" id="s01" style="display:none;">Excellent</span></label></li>
+					<li><input type="checkbox" id="c02" name="q1"><label for="c02"> Ask users to share success stories that can be included in the agency’s monthly newsletter. <span class="fdbkF" id="s02" style="display:none;">Fair</span></label></li>
+					<li><input type="checkbox" id="c03" name="q1"><label for="c03"> Submit your working group members for an administrator’s award to recognize their efforts and contributions. <span class="fdbkF" id="s03" style="display:none;">Fair</span></label></li>
+					<li><input type="checkbox" id="c04" name="q1"><label for="c04"> Send an email to department heads about the benefits of the system and ask them to spread the information within their departments. <span class="fdbkF" id="s04" style="display:none;">Fair</span></label></li>
+					<li><input type="checkbox" id="c05" name="q1"><label for="c05"> Ask the Secretary of the Agency to send out a Memo to all employees. <span class="fdbkG" id="s05" style="display:none;">Excellent</span></label></li>
+					<li><input type="checkbox" id="c06" name="q1"><label for="c06"> Send an agency-wide email outlining the benefits of the new system. <span class="fdbkF" id="s06" style="display:none;">Fair</span></label></li>
+					<li><input type="checkbox" id="c07" name="q1"><label for="c07"> Send an email to all of the executives that took part in the project and ask that they commit to keeping the change. <span class="fdbkF" id="s07" style="display:none;">Fair</span></label></li>
+					<li><input type="checkbox" id="c08" name="q1"><label for="c08"> Ask your team to memorialize the initiative in a report. <span class="fdbkF" id="s08" style="display:none;">Fair</span></label></li>
+					<li><input type="checkbox" id="c09" name="q1"><label for="c09"> Set up a conference call with all of the executives that took part in the project and reiterate your vision and appreciation. <span class="fdbkG" id="s09" style="display:none;">Excellent</span></label></li>
+					<li><input type="checkbox" id="c010" name="q1"><label for="c010"> Set up a steering committee to ensure that the project is managed properly. <span class="fdbkG" id="s010" style="display:none;">Excellent</span></label></li>
+				</ul>
+				<a href="javascript:void(0);" class="btnSubmit" id="submit" title="Submit"></a>
+				<audio id="audio00">
+					<source src="audio/LC0520_Narrator.mp3">
+				</audio>
+			</div>
+		</div>
+	</div>
+</div>
+<div id="navigationButtons">
+	<nav>
+		<div id="nextNavBar" class="sideNavBar"><a href="javascript:void(0);" id="btnNextID" class="btnNext" title="Next"></a></div>
+		<div id="backNavBar" class="sideNavBar"><a href="javascript:void(0);" id="btnBackID" class="btnBack" title="Back"></a></div>
+		<div class="navblock">
+			<p class="promptText" id="prompt_text" align="center">Select your top four next steps. Then select Submit.</p>
+			<span id="ContentReviewDiv" style="display:none;float:left;"></span>
+
+
+			<div id="bottomButtons"></div>
+		</div>
+	</nav>
+</div>
+</body>
+</html>

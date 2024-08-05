@@ -1,0 +1,90 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Leading Change</title>
+	<link rel="stylesheet" type="text/css" href="css/styles.css">
+
+	<script type="text/javascript" src="javascript/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="javascript/main.js"></script>
+	<script type="text/javascript">
+		pageNext = "LC0330";
+		pageBack = "LC0280"; //this may vary
+		nextActive = true;
+		backActive = true;
+
+		$(document).ready(function () {
+			setTimeout(function () {
+				enterPage();
+				window.setTimeout(function () {
+					$("#audio00").trigger("play");
+				}, 500);
+			}, 50);
+		});
+
+		function enterPageLocal() {
+		}
+	</script>
+	<style type="text/css">
+		.hiddenLink {
+			font-size: 1px;
+			opacity: 0;
+		}
+
+		.scrImage {
+			width: 550px;
+			height: 400px;
+			/*float: right;*/
+			/*margin-left:30px;*/
+		}
+
+		@media only screen and (max-width: 1105px) {
+			.scrImage {
+				width: 413px;
+				height: 300px;
+			}
+		}
+	</style>
+</head>
+<body>
+<div class="contentTop">
+	<div id="contentBody"><h1 id="courseHeader"></h1>
+
+		<div id="divProgress"></div>
+		<!--<div class="textBlock" style="text-align: center; margin-bottom:30px;"><h2>Three Months Later…</h2></div>-->
+		<table border="0" style="border-spacing: 20px;clear: both;">
+			<tr>
+				<td colspan="2" class="textBlock"><h2>Three Months Later…</h2></td>
+			</tr>
+			<tr>
+				<td class="textBlock" style="min-width:200px; font-size: 1.1em;">
+					<p>You just passed the 3-month mark and your team is making great progress. Your team meets with you to discuss an upgrade they’d like to purchase for the System. This upgrade was not originally in the budget, but it includes brand new software that will enhance the functionality of the System.</p>
+
+					<p>While the timing is not optimal, and the upgrade is expensive, it will be a long-term win if you spend the money to buy the upgrade now. You send in a purchase request to the CFO and he approves the request. The next day, you receive an email from Shannon that says she is halting the approval process. She is not convinced that you need such an expensive upgrade, especially since you have yet to deliver anything concrete on the System.</p>
+				</td>
+				<td class="textBlock" style="min-width:550px; font-size: 1.1em; text-align: center">
+					<img class="scrImage" src="imagesLsn/LC0320.gif" width="550" height="400" alt="Montage of a clock and calendar">
+				</td>
+			</tr>
+		</table>
+		<audio id="audio00">
+			<source src="audio/LC0320_Narrator.mp3">
+		</audio>
+	</div>
+</div>
+<div id="navigationButtons">
+	<nav>
+		<div id="nextNavBar" class="sideNavBar"><a href="javascript:void(0);" id="btnNextID" class="btnNext" title="Next"></a></div>
+		<div id="backNavBar" class="sideNavBar"><a href="javascript:void(0);" id="btnBackID" class="btnBack" title="Back"></a></div>
+		<div class="navblock">
+			<p class="promptText" id="prompt_text" align="center">Select Next to continue.</p>
+			<span id="ContentReviewDiv" style="display:none;float:left;"></span>
+
+			<div id="bottomButtons"></div>
+		</div>
+	</nav>
+</div>
+</body>
+</html>
