@@ -6,6 +6,7 @@
     "@hotwired/turbo-rails": "^8.0.4",
     "@popperjs/core": "^2.11.8",
     "autoprefixer": "^10.4.19",
+    "axios": "^1.7.3",
     "bootstrap": "^5.3.3",
     "bootstrap-icons": "^1.11.3",
     "buffer": "^6.0.3",
@@ -23,7 +24,8 @@
     "scorm-api-wrapper": "^0.0.2",
     "timers-browserify": "^2.0.12",
     "xml-js": "^1.6.11",
-    "xml2js": "^0.6.2"
+    "xml2js": "^0.6.2",
+    "yup": "^1.4.0"
   },
   "scripts": {
     "build": "esbuild app/javascript/*.* --bundle --sourcemap --format=esm --outdir=app/assets/builds --public-path=/assets",
