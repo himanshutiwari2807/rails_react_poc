@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Image } from "react-bootstrap";
-import axios from 'axios';
+import axios from "axios";
 import { LOGIN_URL } from "../services/APIService";
 import { LoginValidations } from "../validations/LoginValidations";
 
@@ -11,11 +11,11 @@ const Login = (props) => {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
   const [errors, setErrors] = useState({});
-  const [loginError,setLoginError]=useState("");
+  const [loginError, setLoginError] = useState("");
 
   const handleLogin = async (e) => {
     setErrors({});
-    setLoginError("")
+    setLoginError("");
     e.preventDefault();
 
     const formData = { email, password };
@@ -24,40 +24,37 @@ const Login = (props) => {
       await LoginValidations.validate(formData, { abortEarly: false });
 
       let data = JSON.stringify({
-        "email": email,
-        "password": password
+        email: email,
+        password: password,
       });
 
       let config = {
-        method: 'post',
+        method: "post",
         url: LOGIN_URL,
         headers: {
-          'Content-Type': 'application/json'
+          "Content-Type": "application/json",
         },
-        data: data
+        data: data,
       };
 
-      axios.request(config)
+      axios
+        .request(config)
         .then((response) => {
           if (response.status === 200) {
             props.setLogged(true);
-            localStorage.setItem("token", response.data.token)
+            localStorage.setItem("token", response.data.token);
             localStorage.setItem("loggedIn", "true"); // Store logged in state in localStorage
             navigate("/Home");
             console.log(JSON.stringify(response.data.token));
-
-          }
-          else {
-          console.warn(`Unexpected response status: ${response.status}`);
+          } else {
+            console.warn(`Unexpected response status: ${response.status}`);
           }
         })
         .catch((error) => {
-          setLoginError("Invalid email or password")
+          setLoginError("Invalid email or password");
           console.log(error);
         });
-    }
-
-    catch (err) {
+    } catch (err) {
       if (err.inner) {
         const newErrors = err.inner.reduce((acc, error) => {
           acc[error.path] = error.message;
@@ -69,60 +66,10 @@ const Login = (props) => {
   };
 
   return (
-    // <div className="login-page container">
-    //   <div className="row align-items-center d-flex vh-100">
-    //     <div className="col-6"></div>
-    //     <div className="col-6 d-flex justify-content-end">
-    //       <div className="login">
-
-    //         <div className="heading">
-
-    //             <h2 className="text-center">Professional Learning</h2>
-
-    //           <h1>Login</h1>
-
-    //           <form>
-    //             <label>Email</label>
-    //             <input type="email" placeholder="Enter Email" name="email" />
-    //             <label>Password</label>
-    //             <input
-    //               type="password"
-    //               placeholder="Enter Password"
-    //               name="password"
-    //             />
-
-    //             <div className="buttonPart">
-    //               <p className="error"></p>
-    //             </div>
-
-    //             <button onClick={handleLogin}>Login</button>
-    //           </form>
-
-    //           <div className="switchPage">
-    //             <a href="/signup">Sign up</a>
-    //           </div>
-
-    //           <div className="text-center d-flex align-items-center justify-content-center mt-3">
-    //             <p className="d-flex align-items-center">
-    //               Powered by{" "}
-    //               <Image
-    //                 className="logo-image"
-    //                 src="../../assets/images/powered-by-graphic.svg"
-    //                 alt="image"
-    //               />
-    //             </p>
-    //           </div>
-    //         </div>
-    //       </div>
-    //     </div>
-    //   </div>
-    // </div>
-
     <div className="login-page container">
       <div className="row align-items-center d-flex vh-100">
         <div className="col-6"></div>
         <div className="col-6 d-flex justify-content-end">
-
           <div className="login">
             <div className="heading">
               <h2 className="text-center">Professional Learning</h2>
@@ -136,11 +83,10 @@ const Login = (props) => {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
-                {errors.email && <p style={{ color: 'red' }}>{errors.email}</p>}
+                {errors.email && <p style={{ color: "red" }}>{errors.email}</p>}
 
                 <label>Password</label>
                 {/* <span class="red-asterisk">*</span> */}
-
 
                 <input
                   type="password"
@@ -149,12 +95,18 @@ const Login = (props) => {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                 />
-                {errors.password && <p style={{ color: 'red' }}>{errors.password}</p>}
+                {errors.password && (
+                  <p style={{ color: "red" }}>{errors.password}</p>
+                )}
                 <div className="buttonPart">
                   <p className="error"></p>
                 </div>
                 <button type="submit">Login</button>
-                {loginError && <p style={{ color: 'red' , textAlign: 'center'}}>{loginError}</p>}
+                {loginError && (
+                  <p style={{ color: "red", textAlign: "center" }}>
+                    {loginError}
+                  </p>
+                )}
               </form>
               <div className="switchPage">
                 <a href="/signup">Sign up</a>
@@ -169,10 +121,8 @@ const Login = (props) => {
                   />
                 </p>
               </div>
-
             </div>
           </div>
-
         </div>
       </div>
     </div>
