@@ -1,0 +1,228 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Leading Change</title>
+	<link rel="stylesheet" type="text/css" href="css/jquery-ui.min.css">
+	<link rel="stylesheet" type="text/css" href="css/styles.css">
+
+
+	<script type="text/javascript" src="javascript/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="javascript/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="javascript/main.js"></script>
+	<script type="text/javascript">
+		pageNext = "LC0330";
+		pageBack = "LC0330";
+		nextActive = false;
+		backActive = true;
+
+		var eventSeq = 0;
+		var popupText = "";
+
+		popupPosition = "center top-80";
+
+		$(document).ready(function () {
+			setTimeout(function () {
+				enterPage();
+				parent.secondAudio = true;
+				window.setTimeout(function () {
+					$("#audio00").trigger("play");
+				}, 500);
+			}, 50);
+			//if (sessionStorage.showCC == 1) {}
+			/*$(function () {
+				$("#dialog1").dialog({
+					resizable: false, modal: true, autoOpen: false, closeOnEscape: true, position: {my: "top", at: popupPosition, of: "#text_msg"}
+				});
+				$("#text_msg").on("click", function () {
+					$("#dialog1").dialog("open");
+				});
+			});*/
+			$("#audio00").on({
+				"ended": function () {
+					window.setTimeout(function () {
+						$("#woman_sprite").css("background-image", "url(imagesLsn/Nina_door.png)").show();
+						$("#audio03").trigger("play");
+						$("#prompt_text").html("Select the door to invite Nina in.");
+					}, 500);
+				}
+			});
+
+			$("#audio01").on({
+				"ended": function () {
+					$("#phone_sprite").css("background-image", "url(imagesLsn/Phone.png)");
+					activateNext("Select Next to return to the moment of decision, and take a different approach.");
+					//$("#prompt_text").text("Select Next to return to the moment of decision, and take a different approach.");
+				}, "pause": function () {
+					this.currentTime = 0;
+				}
+			});
+
+			$("video").on("ended", function () {
+				window.setTimeout(function () {
+					$("#prompt_text").text("It looks like Lisa has a message for you. Select the phone to read her text.");
+					//activateNext();
+					$("#videoFrame").hide("slow", function () {
+						$("#officeFrame").show();
+						window.setTimeout(function () {
+							$("#audio02").trigger("play");
+							$("#phone_sprite").css({"background-image":"url(imagesLsn/Phone_msg.png)","cursor":"pointer"});
+							$("#woman_sprite").hide();
+							eventSeq++;
+						}, 1000);
+					});
+					//$("#videoFrame").css("visibility","hidden");
+				}, 1500);
+			});
+
+			$(".officeItem").on("click", function (event) {
+				var cTarget = event.target.id;
+				switch (cTarget) {
+					case "woman_sprite":
+//					case "email_sprite":
+//					case "email_content":
+						//alert("You have selected the PC");
+						if (eventSeq >= 0) {
+//							popupHeader = "Video Placeholder";
+//							popupText = "<em>A video of Nina will go here<\/em>";
+//							startPopUp3(popupHeader, popupText, 450, 300);
+							$("#prompt_text").html("&nbsp;");
+							$("#officeFrame").hide();
+							$("audio")[0].pause(); //if selected during second event
+							$("#audio01").currentTime = 0;
+							//$('#animation1wl audio').pause()
+							$("#videoFrame").show("slow");   //reactivate for video
+							//$("#placeholderFrame").show("slow");
+							//$("#videoFrame").css("visibility","visible");
+							window.setTimeout(function () {
+								$("video").trigger("play");
+							}, 750);  //reactivate for video
+							//remove section below for video
+							/*window.setTimeout(function () {
+								$("#prompt_text").text("It looks like Lisa has a message for you. Select the phone to read her text.");
+								//activateNext();
+								$("#placeholderFrame").hide("slow", function () {
+									$("#officeFrame").show();
+									window.setTimeout(function () {
+										$("#audio02").trigger("play");
+										$("#phone_sprite").css({"background-image":"url(imagesLsn/Phone_msg.png)","cursor":"pointer"});
+										$("#woman_sprite").hide();
+										eventSeq++;
+									}, 1000);
+								});
+							}, 2500);*/
+						}
+						break;
+					case "phone_sprite":
+						if (eventSeq >= 1) {
+//							popupHeader = "Phone Message Placeholder";
+//							popupText = "<em>A recorded phone message from Lisa will go here.<\/em>";
+//							startPopUp3(popupHeader, popupText, 450, 300);
+							//$("#phone_sprite").css("background-image", "url(imagesLsn/Phone_on.png)");
+							$("#phone_sprite").hide();
+							$("#scrollBlock").css("min-height","520px");
+							//$("#audio01").trigger("play");
+							$("#prompt_text").html("&nbsp;");
+							$("#text_msg").show();
+							window.setTimeout(function () {
+								//$("#prompt_text").text("Select Next to return to the moment of decision, and take a different approach.");
+								activateNext("Select Next to return to the moment of decision, and take a different approach.");
+							}, 1000);
+							//eventSeq++;
+						} /*else {
+							alert("You have selected the phone. Please try again.");
+						}*/
+						break;
+					case "PC_sprite":
+						alert("You have selected the desktop computer. Please try again.");
+						break;
+				}
+				return false;
+			});
+		});
+
+		function enterPageLocal() {
+		}
+	</script>
+	<style type="text/css">
+		.ui-widget-header {
+			border: none;
+			text-align: center;
+		}
+
+		.ui-widget-content {
+			border: none;
+			background: transparent;
+		}
+	</style>
+</head>
+<body>
+<div class="contentTop">
+	<div id="contentBody" data-role="page"><h1 id="courseHeader"></h1>
+
+		<div id="divProgress"></div>
+
+		<div class="headerBlock"><h2>The Outcome</h2>
+
+			<!--<div id="leadText1"><strong>Your choice:</strong> Make an executive decision to cancel the purchase request. The System can function without the upgrade.</div>-->
+			<!--<div id="leadText2">After seeing Shannon’s response, you decide to cancel the purchase request. That afternoon, Nina asks to speak with you.</div>-->
+		</div>
+		<div id="scrollBlock" class="textBlock" data-role="main">
+			<div id="officeFrame">
+				<!--<img src="imagesLsn/Office.png" height="521" width="803">-->
+				<div id="PC_sprite" class="officeItem"></div>
+				<!--<div id="email_sprite" class="officeItem" style="width:278px; height: 66px; background-image: url(imagesLsn/email_Shannon_1.png); position: absolute; left:534px; top:40px; cursor:pointer;"></div>-->
+				<div id="phone_sprite" class="officeItem"></div>
+				<div id="woman_sprite" class="officeItem"></div>
+
+				<div id="email_content" class="officeItem">&nbsp;</div>
+				<div id="text_msg" class="officeItem"></div>
+				<!--<div id="text_msg" class="officeItem" style="width: 186px; height: 377px; background-image: url(imagesLsn/Phone_txtMsg.png); position: absolute; left:201px; top:10px; display: none; cursor: zoom-in"></div>-->
+			</div>
+			<div id="videoFrame" style="display: none; text-align: center;">
+				<video controls preload="auto">
+					<source src="video/LC0360.mp4" type="video/mp4">
+					<script type="text/javascript">if(sessionStorage.showCC==1){document.write('<track id="vidTrk" src="video/CC_LC0360.vtt" kind="subtitles" srclang="en" label="English" default>')} else {document.write('<track id="vidTrk" src="video/CC_LC0360.vtt" kind="subtitles" srclang="en" label="English">')}</script>
+				</video>
+				<!--<p style="text-align: center">This is a placeholder video.</p>-->
+			</div>
+			<div id="placeholderFrame" style="display: none; text-align: center; height:220px">
+				<p style="margin-top:130px; font-size:2em">A video will be placed here.</p>
+			</div>
+			<!--<div id="pageone" data-role="main" class="ui-content">
+
+				<div id="dialog1" title="Text message" style="text-align:center;">
+					<img src="imagesLsn/Phone_Zoom.png" style="width:258px;height:522px;" alt="Closeup of text message">
+				</div>
+			</div>-->
+			<audio id="audio00">
+				<source src="audio/LC0360_Narrator.mp3">
+			</audio>
+			<audio id="audio01">
+				<source src="audio/LC_0360.mp3">
+			</audio>
+			<audio id="audio02">
+				<source src="audio/iPhone_SFX2.mp3">
+			</audio>
+			<audio id="audio03">
+				<source src="audio/Knocking.mp3">
+			</audio>
+		</div>
+	</div>
+</div>
+<div id="navigationButtons">
+	<nav>
+		<div id="nextNavBar" class="sideNavBar"><a href="javascript:void(0);" id="btnNextID" class="btnNext" title="Next"></a></div>
+		<div id="backNavBar" class="sideNavBar"><a href="javascript:void(0);" id="btnBackID" class="btnBack" title="Back"></a></div>
+		<div class="navblock">
+			<p class="promptText" id="prompt_text" align="center">&nbsp;</p>
+			<span id="ContentReviewDiv" style="display:none;float:left;"></span>
+
+			<div id="bottomButtons"></div>
+		</div>
+	</nav>
+</div>
+</body>
+</html>

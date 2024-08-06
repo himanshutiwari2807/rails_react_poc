@@ -1,0 +1,141 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Leading Change</title>
+	<link rel="stylesheet" type="text/css" href="css/styles.css">
+
+	<script type="text/javascript" src="javascript/jquery-2.1.4.min.js"></script>
+	<!--<script type="text/javascript" src="javascript/jquery-1.11.3.min.js"></script>-->
+	<script type="text/javascript" src="javascript/jquery-ui.js"></script>
+	<script type="text/javascript" src="javascript/main.js"></script>
+	<script type="text/javascript">
+		pageNext = "LC0040";
+		pageBack = "LC0020";
+		nextActive = false;
+		backActive = true;
+
+		var eventSeq = 0;
+		var popupHeader = "";
+		var popupText = "";
+
+		$(document).ready(function () {
+			setTimeout(function () {
+				enterPage();
+				window.setTimeout(function () {
+					$("#audio00").trigger("play");
+				}, 500);
+			}, 50);
+
+			$("#audio00").on({
+				"ended": function () {
+					$("#audio01").trigger("play");
+					$("#email_sprite").css("background-image", "url(imagesLsn/LC0030a_email.png)").show("slide", {direction: "right"},function(){
+						$("#PC_sprite").css("cursor","pointer");
+						$("#prompt_text").html("Select the computer to read your new email.");
+					});
+				}
+			});
+
+			$(".officeItem").on("click", function (event) {
+				var cTarget = event.target.id;
+				switch (cTarget) {
+					case "PC_sprite":
+					case "email_sprite":
+					case "email_content2":
+						if (eventSeq == 0) {
+							$("#prompt_text").html("&nbsp;");
+							$("#email_sprite").hide();
+							$("#PC_sprite").css({"cursor":"default","background-image":"url(imagesLsn/PC_e-mail_claire.png)"});
+							popupText = "Hi!<br><br>I’m glad that we were finally able to meet. I’m excited to be a part of this team, even if I’m not 100% sure how we are going to accomplish everything, especially in such a short timeframe. A project of this scale will definitely be challenging, but I’m sure that we will be successful under your leadership.<br><br>-Claire";
+							$("#email_content2").css({"cursor":"default"}).html(popupText).show();
+							$("#email_to").text("You");
+							$("#email_from").text("Claire");
+							$("#email_subject").text("Introduction");
+							window.setTimeout(function () {
+								//activateNext();
+								eventSeq++;
+								$("#audio01").trigger("play");
+								$("#email_sprite").css("background-image", "url(imagesLsn/LC0030b_email.png)").show("slide", {direction: "right"});
+								$("#prompt_text").text("You have another email. Select your computer to read it.");
+								$("#PC_sprite,#email_content2").css("cursor","pointer");
+							}, 3000);
+						}
+						if (eventSeq >= 1) {
+							$("#prompt_text").html("&nbsp;");
+							$("#email_sprite").hide();
+							$("#email_content2").css({"cursor":"default"});
+							$("#PC_sprite").css({"cursor":"default","background-image":"url(imagesLsn/PC_e-mail_max.png)"});
+							popupText = "Good afternoon!<br><br>It was nice speaking with you. I have worked with Nina before but I have never worked with Leo and Claire, although I’ve heard great things about them. I must note—there is not a lot of clarity about this project, and the timeline is a big concern. I look forward to working out the details with you and the team.<br><br>Thanks,<br>Max";
+							$("#email_content2").html(popupText).show();
+							$("#email_to").text("You");
+							$("#email_from").text("Max");
+							$("#email_subject").text("Introduction");
+							$("#PC_sprite,#email_content2").css("cursor","default");
+							window.setTimeout(function () {
+								activateNext();
+							}, 1000);
+						}
+						break;
+				}
+				return false;
+			});
+		});
+
+		function enterPageLocal() {
+		}
+	</script>
+</head>
+<body>
+<div class="contentTop">
+	<div id="contentBody"><h1 id="courseHeader"></h1>
+
+		<div id="divProgress"></div>
+
+		<div class="headerBlock"><h2>Later That Day&hellip;</h2>
+
+			<!--<div id="leadText1">On your first day in your new role, you send an introductory email to your whole team, welcoming them to the new office and expressing your enthusiasm about the future. You then set up meetings with each of your managers individually to introduce yourself and learn more about them. You receive a few email replies from your team after their initial one-on-one sessions.</div>-->
+			<!--<div id="leadText2">xxxxxxxxxxxxxx</div>-->
+		</div>
+
+		<div id="scrollBlock" class="textBlock">
+
+			<div id="officeFrame">
+				<div id="PC_sprite" class="officeItem"></div>
+
+				<div id="email_sprite" class="officeItem"></div>
+				<div id="phone_sprite" class="officeItem" ></div>
+				<div id="woman_sprite" class="officeItem"></div>
+
+				<div id="email_to" class="officeItem"></div>
+				<div id="email_from" class="officeItem"></div>
+				<div id="email_subject" class="officeItem"></div>
+				<div id="email_content2" class="officeItem"></div>
+				<div id="text_msg" class="officeItem"></div>
+			</div>
+
+			<audio id="audio00">
+				<source src="./audio/LC0030_Narrator.mp3">
+			</audio>
+			<audio id="audio01">
+				<source src="./audio/email_1.mp3">
+			</audio>
+		</div>
+	</div>
+</div>
+<div id="navigationButtons">
+	<nav>
+		<div id="nextNavBar" class="sideNavBar"><a href="javascript:void(0);" id="btnNextID" class="btnNext" title="Next"></a></div>
+		<div id="backNavBar" class="sideNavBar"><a href="javascript:void(0);" id="btnBackID" class="btnBack" title="Back"></a></div>
+		<div class="navblock">
+			<p class="promptText" id="prompt_text" align="center">&nbsp;</p>
+			<span id="ContentReviewDiv" style="display:none;float:left;"></span>
+
+			<div id="bottomButtons"></div>
+		</div>
+	</nav>
+</div>
+</body>
+</html>

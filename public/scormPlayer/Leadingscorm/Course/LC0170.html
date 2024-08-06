@@ -1,0 +1,229 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Leading Change</title>
+	<link rel="stylesheet" type="text/css" href="css/styles.css">
+
+	<script type="text/javascript" src="javascript/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="javascript/main.js"></script>
+	<script type="text/javascript">
+		pageNext = "LC0180";
+		pageBack = "LC0110";
+		nextActive = false;
+		backActive = true;
+
+		var eventSeq = -1;
+		var popupHeader = "";
+		var popupText = "";
+
+		//$("#phone_sprite").css("background-image", "url(imagesLsn/Phone.png)");
+
+		/*$("#placeholderFrame").show("slow", function () {
+			$("#prompt_text").html("&nbsp;");
+			window.setTimeout(function () {
+				$("#placeholderFrame").hide("slow", function () {
+					$("#officeFrame").show();
+					window.setTimeout(function () {
+						$("#woman_sprite").hide();
+						$("#prompt_text").text("Select Next to continue.");
+						nextInactiveMsg = "End of demo. Select Back to view another choice.";
+					}, 750);
+				});
+			}, 2500);
+		});*/
+
+		/*$("#officeFrame").hide();
+		$("#videoFrame").show("slow");
+		window.setTimeout(function () {
+			$("video").trigger("play");
+		}, 750);*/
+
+		/*popupText = "<strong>From:<\/strong> Shannon<br><strong>Subject:<\/strong> Software Upgrade<br><br>I understand that your office has moved forward on the purchase of the system upgrade without my permission. I halted this purchase because I have yet to see any evidence that this upgrade is cost-effective, and I am disappointed that you ignored my decision.<br><br>Send me a justification for the upgrade by COB today and I will review. Also, please include a progress update on the system to date. I will make a decision on whether or not the order needs to be cancelled.<br><br>&ndash;Shannon";
+		$("#email_content").html(popupText).show();
+		$("#email_sprite").hide();*/
+
+		//$("#email_sprite").show("slide", {direction: "right"});
+
+		//$("#woman_sprite").css("background-image", "url(imagesLsn/Shannon_door.png)").delay(50).show();
+
+		//$("#audio03").trigger("play");
+
+		/*window.setTimeout(function () {
+			//$("#phone_sprite").css("background-image", "url(imagesLsn/Phone_voicemail.png)");
+			eventSeq++;
+		}, 1000);*/
+
+		/*$("#videoFrame").hide("slow", function () {
+			$("#officeFrame").show();
+			window.setTimeout(function () {
+				/!*$("#audio03").trigger("play");
+				$("#woman_sprite").css("background-image", "url(imagesLsn/Shannon_door.png)").delay(50).show();
+				//$("#phone_sprite").css("background-image", "url(imagesLsn/Phone_voicemail.png)");
+				eventSeq++;*!/
+			}, 1000);
+		});*/
+
+		$(document).ready(function () {
+			setTimeout(function () {
+				enterPage();
+			}, 50);
+			/*$("callbackEndedPause").on({
+				"ended": function () {
+					$("#phone_sprite").css("background-image", "url(imagesLsn/Phone.png)");
+					$("#prompt_text").text("xxxxxxxxxxxxxxxxxxx");
+					nextInactiveMsg = "End of demo. Select Back to view another choice.";
+				}, "pause": function () {
+					this.currentTime = 0;
+				}
+			});*/
+
+			/*$("callback").on("ended", function () {
+				window.setTimeout(function () {
+					if (eventSeq == 0) {
+						//$("#prompt_text").text("A phone call to Shannon to update her may be the next step.  Select the phone to give her a call.");
+						$("#prompt_text").text("Now select the door again to meet with Shannon in person.");
+						//activateNext();
+						$("#videoFrame").hide("slow", function () {
+							$("#officeFrame").show();
+							window.setTimeout(function () {
+								$("#audio03").trigger("play");
+
+								//$("#phone_sprite").css("background-image", "url(imagesLsn/Phone_voicemail.png)");
+								eventSeq++;
+							}, 1000);
+						});
+					}
+					if (eventSeq >= 1) {
+						$("#videoFrame").hide("slow", function () {
+							$("#officeFrame").show();
+							window.setTimeout(function () {
+								$("#woman_sprite").hide();
+								$("#prompt_text").text("Select Next to continue.");
+								nextInactiveMsg = "End of demo. Select Back to view another choice.";
+							}, 750);
+						});
+					}
+				}, 1500);
+			});*/
+
+			$("video").on("ended", function () {
+				$("#videoFrame").hide("slow", function () {
+					$("#officeFrame").show();
+					window.setTimeout(function () {
+						activateNext();
+					}, 1500);
+				});
+			});
+
+			$("#audio01").on({
+				"ended": function () {
+					window.setTimeout(function () {
+						$("#woman_sprite").css("background-image", "url(imagesLsn/Max_door.png)").show();
+						$("#audio02").trigger("play");
+					}, 1000);
+				}
+			});
+
+			$("#audio02").on({
+				"ended": function () {
+					window.setTimeout(function () {
+						$("#prompt_text").text("Select the door to invite Max in.");
+						eventSeq = 0;
+					}, 400);
+				}
+			});
+
+			$(".officeItem").on("click", function (event) {
+				var cTarget = event.target.id;
+				switch (cTarget) {
+					case "woman_sprite":
+						if (eventSeq == 0) {
+							$("#prompt_text").html("&nbsp;");
+							$("#woman_sprite").hide();
+							$("#officeFrame").hide();
+							$("audio")[0].pause(); //if selected during second event
+							$("#audio01").currentTime = 0;
+							$("#videoFrame").show("slow");  //reactivate for video
+							window.setTimeout(function () {
+								$("video").trigger("play");
+							}, 750);
+						}
+						if (eventSeq >= 1) {
+							$("#prompt_text").html("&nbsp;");
+						}
+						break;
+				}
+				return false;
+			});
+			window.setTimeout(function () {
+				//$("#woman_sprite").show();
+				$("#audio01").trigger("play");
+				//$("#prompt_text").html("xxxxxxxxxxxxxxxxxxxxx");
+			}, 1000);
+		});
+
+		function enterPageLocal() {
+		}
+	</script>
+</head>
+<body>
+<div class="contentTop">
+	<div id="contentBody"><h1 id="courseHeader"></h1>
+
+		<div id="divProgress"></div>
+
+		<div class="headerBlock"><h2>One Month Later</h2>
+
+			<!--<div id="leadText1">Your team is working hard to compile all of the data that you need from different departments and beginning to load it onto the platform. Max knocks on your door after a meeting with the other managers…</div>-->
+			<!--<div id="leadText2">xxxxxxxxxxxxxx</div>-->
+		</div>
+
+		<div id="scrollBlock" class="textBlock">
+
+			<div id="officeFrame">
+				<div id="PC_sprite" class="officeItem"></div>
+
+				<div id="email_sprite" class="officeItem"></div>
+				<div id="phone_sprite" class="officeItem" ></div>
+				<div id="woman_sprite" class="officeItem"></div>
+
+				<div id="email_content" class="officeItem">&nbsp;</div>
+				<div id="text_msg" class="officeItem"></div>
+			</div>
+			<div id="videoFrame" style="display: none; text-align: center;">
+				<video controls preload="auto">
+					<source id="vidSrc" src="video/LC0170.mp4" type="video/mp4">
+					<script type="text/javascript">if(sessionStorage.showCC==1){document.write('<track id="vidTrk" src="video/CC_LC0170.vtt" kind="subtitles" srclang="en" label="English" default>')} else {document.write('<track id="vidTrk" src="video/CC_LC0170.vtt" kind="subtitles" srclang="en" label="English">')}</script>
+				</video>
+				<!--<p id="placeholderNote" style="text-align: center">This is a placeholder video.</p>-->
+			</div>
+			<div id="placeholderFrame" style="display: none; text-align: center; height:220px">
+				<p style="margin-top:130px; font-size:2em">A video will be placed here.</p>
+			</div>
+
+			<audio id="audio01">
+				<source src="audio/LC0170_Narrator.mp3">
+			</audio>
+			<audio id="audio02">
+				<source src="audio/Knocking.mp3">
+			</audio>
+		</div>
+	</div>
+</div>
+<div id="navigationButtons">
+	<nav>
+		<div id="nextNavBar" class="sideNavBar"><a href="javascript:void(0);" id="btnNextID" class="btnNext" title="Next"></a></div>
+		<div id="backNavBar" class="sideNavBar"><a href="javascript:void(0);" id="btnBackID" class="btnBack" title="Back"></a></div>
+		<div class="navblock">
+			<p class="promptText" id="prompt_text" align="center">&nbsp;</p>
+			<span id="ContentReviewDiv" style="display:none;float:left;"></span>
+
+			<div id="bottomButtons"></div>
+		</div>
+	</nav>
+</div>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Leading Change</title>
+	<link rel="stylesheet" type="text/css" href="css/styles.css">
+
+	<script type="text/javascript" src="javascript/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="javascript/main.js"></script>
+	<script type="text/javascript">
+		//Resize Window
+		if (!screen) {
+			var w = 1000;
+			var h = 680;
+		} else {
+			var w = screen.availWidth;
+			var h = screen.availHeight;
+			//if (w > h * 1.4) w = h * 1.4;
+			if (w > h * 1.2) w = h * 1.2;
+		}
+		try { window.resizeTo(w,h); } catch (e) {}
+		try { window.moveTo((screen.availWidth - w)/2,(screen.availHeight - h)/2); } catch (e) {}
+		if (window.screenX == screen.width) try { window.moveTo(screen.width + (screen.availWidth - w)/2,(screen.availHeight - h)/2); } catch (e) {}
+
+		$(document).ready(function () {setTimeout(function () { enterPage(); }, 50);});
+
+		function enterPageLocal() {
+			showProps();
+		};
+
+		$(window).resize(function() {
+			showProps();
+		});
+
+
+		function showProps() {
+			var mq, s;
+
+			var FEEX = "";
+			FEEX += "window.screenX = " + window.screenX + "<br>";
+			FEEX += "window.innerWidth = " + window.innerWidth + "<br>";
+			FEEX += "window.innerHeight = " + window.innerHeight + "<br>";
+			FEEX += "window.devicePixelRatio = " + window.devicePixelRatio + "<br>";
+			FEEX += "<br>";
+			s = "(min-height: 500px)";
+			mq = window.matchMedia( s );
+			FEEX += s + " = " + mq.matches + "<br>";
+			s = "(min-width: " + Number(window.devicePixelRatio * window.innerWidth) + "px)";
+			mq = window.matchMedia( s );
+			FEEX += s + " = " + mq.matches + "<br>";
+			s = "(min-width: " + Number(window.innerWidth) + "px)";
+			mq = window.matchMedia( s );
+			FEEX += s + " = " + mq.matches + "<br>";
+			FEEX += "<br>";
+			FEEX += "screen.availWidth = " + screen.availWidth + "<br>";
+			FEEX += "screen.availHeight = " + screen.availHeight + "<br>";
+			FEEX += "screen.width = " + screen.width + "<br>";
+			FEEX += "screen.height = " + screen.height + "<br>";
+			FEEX += "window.screen.deviceXDPI = " + window.screen.deviceXDPI + "<br>";
+			/*
+			FEEX += "zoom = " + parseInt(document.defaultView.getComputedStyle(document.documentElement, null).width,10)/document.documentElement.clientWidth + "<br>";
+			*/
+			$("#divProps").html(FEEX);
+		}
+	</script>
+</head>
+<body>
+<div class="contentTop">
+	<div id="contentBody"><h1 id="courseHeader"></h1><div id="divProgress"></div>
+		<div class="textBlock">
+
+			<h2>Screen Properties</h2>
+
+			<div id="divProps"></div>
+		</div>
+	</div>
+</div>
+<!--
+<div id="navigationButtons">
+<nav>
+	<div class="navblock">
+		<span id="ContentReviewDiv" style="display:none;float:left;"></span>
+		<div id="bottomButtons"></div>
+	</div>
+</nav></div>
+-->
+</body>
+</html>

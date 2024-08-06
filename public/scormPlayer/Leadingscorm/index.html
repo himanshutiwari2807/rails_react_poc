@@ -1,0 +1,167 @@
+<!-- Produced by PowerTrain, Inc.-->
+<!--     www.powertrain.com      -->
+
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Leading Change</title>
+	<script type="text/javascript" src="./Course/javascript/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="./APIWrapper.js"></script>
+	<script type="text/javascript">
+		var choice_0220 = "A"; //added for LC.  Remembers which choice was made on screen LC0220
+		var seen_0250 = false;
+		var secondAudio = false;
+
+		var SCORMuser = null;
+		sessionStorage.showCC = 0;
+		//sessionStorage.unitNumber = 3;
+
+		/*var lmsconnection = false;
+		if (!sessionStorage.isSCORM) {	//========= FEEX - sessionStorage is undefined when running locally using IE
+			sessionStorage.isSCORM = doLMSInitialize();
+		}
+		lmsconnection = sessionStorage.isSCORM;*/
+
+		$(document).ready(function () {
+			SCORMuser.goBookmark();
+			//openUnitWindow(3);
+		});
+
+		// ------------------ SCORM Tracking Object ---------------------
+		var SCORMinst = function () {
+			"use strict";
+			this.pageViewedList = [];
+			this.pagesArray = ["LC0001", "LC0005", "LC0020", "LC0030", "LC0040", "LC0050", "LC0060", "LC0070", "LC0080", "LC0090", "LC0100", "LC0110", "LC0120", "LC0130", "LC0140", "LC0150", "LC0160", "LC0170", "LC0180", "LC0190", "LC0200", "LC0210", "LC0220", "LC0230", "LC0240", "LC0250", "LC0260", "LC0270", "LC0280", "LC0290", "LC0300", "LC0310", "LC0320", "LC0330", "LC0340", "LC0350", "LC0360", "LC0370", "LC0380", "LC0390", "LC0400", "LC0410", "LC0420", "LC0430", "LC0440", "LC0450", "LC0460", "LC0470", "LC0480", "LC0490", "LC0500", "LC0510", "LC0520", "LC0530", "LC0540"];
+			this.pageBookmark = "LC0001";
+			this.pageID = this.pageBookmark;
+			this.lsnStatus = "";
+			this.lmsconnection = doLMSInitialize();
+			//alert(doLMSInitialize());
+
+			//alert(this.lmsconnection);
+			//alert(this.lmsconnection + " ck");
+
+			if (this.lmsconnection) {
+				this.lsnStatus = doLMSGetValue("cmi.core.lesson_status");
+				if (this.lsnStatus != "completed") {
+					// the student is attempting the lesson for the first time
+					doLMSSetValue("cmi.core.lesson_status", "incomplete");
+					doLMSCommit();
+				}
+				var scrm = doLMSGetValue("cmi.suspend_data");
+				if (scrm != "") {
+					this.pageViewedList = jQuery.parseJSON(scrm);
+				}
+				if (this.lsnStatus != "completed") {
+					scrm = doLMSGetValue("cmi.core.lesson_location");
+					if (scrm != "") {
+						this.pageBookmark = scrm;
+						//SCORMuser.pageBookmark = this.pageBookmark;
+					}
+				}
+			}
+		};
+		SCORMinst.prototype.recordBookmark = function (pageID) {
+			"use strict";
+			this.pageID = pageID;
+			if (this.lmsconnection) {
+				doLMSSetValue("cmi.core.lesson_location", this.pageID);
+				doLMSCommit();
+			}
+		};
+		SCORMinst.prototype.addThisPage = function () {
+			"use strict";
+			if (this.pageViewedList.indexOf(this.pageID) == -1) {
+				this.pageViewedList.push(this.pageID);
+				//alert("Add this page "+this.pageViewedList);
+				if (this.lmsconnection) {
+					doLMSSetValue("cmi.suspend_data", JSON.stringify(this.pageViewedList));
+					doLMSCommit();
+				}
+			}
+		};
+
+		SCORMinst.prototype.markCompletion = function () {
+			"use strict";
+			if (this.lmsconnection) {
+				doLMSSetValue("cmi.core.score.raw", "100");
+				doLMSSetValue("cmi.core.lesson_status", "completed");
+				doLMSCommit();
+			}
+		};
+		SCORMinst.prototype.closeLesson = function () {
+			"use strict";
+			if (this.lmsconnection) {
+				doLMSFinish();
+				this.lmsconnection = false;
+			}
+		};
+		SCORMinst.prototype.findItem = function (itemX) { // method for checking if been there for pages where Next initially disabled
+			"use strict";
+			//alert(this.pageViewedList);
+			return this.pageViewedList.indexOf(itemX) != -1;
+		};
+		SCORMinst.prototype.countPagesViewed = function () {
+			"use strict";
+			var pagesCounted = 0;
+			for (var i = 0; i < this.pagesArray.length; i++) {
+				if (this.findItem(this.pagesArray[i])) {
+					pagesCounted += 1;
+				}
+			}
+			//alert(pagesCounted);
+			return pagesCounted;
+		};
+		SCORMinst.prototype.goBookmark = function () {
+			"use strict";
+			//alert(this.pageBookmark);
+			if (this.pageBookmark != "") {
+				//document.getElementById("Iframe1").src = currentBookmark;
+
+				$("#Iframe1").attr("src", "Course/" + this.pageBookmark + ".html");
+			}
+		};
+
+		SCORMuser = new SCORMinst();
+	</script>
+	<style type="text/css">
+		html,body {
+			padding: 0;
+			margin:0;
+			height:100%;
+		}
+
+		.checkmark {
+			visibility: hidden;
+			padding-right: 10px;
+		}
+		iframe {
+			border: none;
+			height: 99%;
+			width: 100%;
+			padding: 0;
+			margin: 0;
+			background-repeat: repeat-x;
+		}
+	</style>
+</head>
+<body bgcolor="F3F3F4">
+<!--<span class="header">Leading Change</span>-->
+<!--<div><img id="headerLogo" src="Course/images/LC_Title.png" width="337" height="64" alt="Leading Change" title="Leading Change"></div>-->
+<iframe id="Iframe1" title="courseframe" src="" seamless="seamless"
+		style="width: 100%; height: 99%; border: none; padding: 0; margin: 0; background-repeat: repeat-x; display:block;"></iframe>
+
+<!--<p><img src="checkmark.png" id="checkmark1" class="checkmark"><a href="javascript:openUnitWindow(1)">Unit 1: Navigation</a></p>-->
+
+<!--<p><img src="checkmark.png" id="checkmark2" class="checkmark"><a href="javascript:openUnitWindow(2)">Unit 2: </a></p>-->
+
+<!--<p style="margin-top: 32px"><img src="checkmark.png" id="checkmark3" class="checkmark"><a href="javascript:openUnitWindow(3)">Leading Change Simulation</a></p>-->
+
+<div id="debugText"></div>
+
+
+</body>
+</html>

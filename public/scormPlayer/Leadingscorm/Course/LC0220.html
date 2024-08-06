@@ -1,0 +1,161 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Leading Change</title>
+	<link rel="stylesheet" type="text/css" href="css/styles.css">
+
+	<script type="text/javascript" src="javascript/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="javascript/main.js"></script>
+	<script type="text/javascript">
+		pageNext = "LC0230";
+		pageBack = "LC0180";
+		nextActive = false;
+		backActive = true;
+
+		$(document).ready(function () {
+			setTimeout(function () {
+				enterPage();
+				window.setTimeout(function () {
+					if ((parent.choice_0220 == "B")||(parent.choice_0220 == "D")) {
+						$("#audio02").trigger("play");
+					} else {
+						$("#audio00").trigger("play");
+					}
+					//
+				}, 1000);
+			}, 50);
+
+			$("#audio00").on({
+				"ended": function () {
+					window.setTimeout(function () {
+						$("#audio01").trigger("play")
+					}, 1000);
+				}
+			});
+
+			$("#buttonDecide").on("click", function () {
+				var cTarget = $('input[name=q1]:checked', '#toDecide').val();
+				switch (cTarget) {
+					case "c01":
+						parent.choice_0220 = "A";
+						document.location.href = "LC0230.html";
+						break;
+					case "c02":
+						parent.choice_0220 = "B";
+						document.location.href = "LC0240.html";
+						break;
+					case "c03":
+						if (parent.seen_0250) {
+							document.location.href = "LC0260.html";
+						} else {
+							parent.choice_0220 = "C";
+							document.location.href = "LC0250.html";
+						}
+						break;
+					case "c04":
+						if (parent.seen_0250) {
+							document.location.href = "LC0270.html";
+						} else {
+							parent.choice_0220 = "D";
+							document.location.href = "LC0250.html";
+						}
+						break;
+				}
+			});
+		});
+
+		function enterPageLocal() {
+		}
+
+	</script>
+	<style type="text/css">
+		input[type=radio] {
+			float: left;
+			margin-top: 7px;
+			padding-left: 5px;
+			position: relative;
+			left: 2px;
+			transform: scale(1.5);
+		}
+
+		label {
+			display: block;
+			padding-left: 38px;
+		}
+
+		ul {
+			margin: 0;
+			padding: 0;
+		}
+
+		.scrImage {
+			width: 520px;
+			height: 360px;
+			float: right;
+			margin-left:30px;
+		}
+
+		@media only screen and (max-width: 1005px) {
+			.scrImage {
+				width: 390px;
+				height: 270px;
+			}
+		}
+	</style>
+</head>
+<body>
+<div class="contentTop">
+	<div id="contentBody"><h1 id="courseHeader"></h1>
+
+		<div id="divProgress"></div>
+
+		<div class="headerBlock"><h2>Time to Decide</h2>
+
+			<!--<div id="leadText1" class="insideText">A few weeks later you begin to hear concerning rumors about your project. A few of your trusted colleagues have reported they’ve overheard people saying that you are doing a poor job managing the HRIT system, as it keeps running into problems. They don’t believe the data in the system is accurate, and are saying that you are wasting the agency’s time and money—that the project is doomed to fail. You are just starting to build momentum and these rumors might cause more than a few setbacks.</div>-->
+			<!--<div id="leadText2">What’s your strategy for dealing with the rumors?</div>-->
+		</div>
+		<div id="scrollBlock" class="textBlock">
+
+			<img class="scrImage" src="imagesLsn/LC0220.png" alt="Groups of people">
+
+			<div class="choiceText">
+				<form id="toDecide">
+					<ul style="list-style-type:none">
+						<li><input type="radio" id="c01" value="c01" name="q1"><label for="c01"> Compile data on the progress and benefits of the HRIT System and ask a colleague to help spread the positive information.</label></li>
+						<li><input type="radio" id="c02" value="c02" name="q1"><label for="c02"> Don’t do anything. They are just rumors, after all, and there is not enough evidence to justify taking any action.</label></li>
+						<li><input type="radio" id="c03" value="c03" name="q1"><label for="c03"> Talk to more people to find out more information about the rumors, including the source. Once you confirm the source of the rumors, have a conversation with the individual(s) responsible to provide an update on the progress of the System.</label></li>
+						<li><input type="radio" id="c04" value="c04" name="q1"><label for="c04"> Talk to more people to find out more information about the rumors, including the source. Once you confirm the source of the rumors, threaten to take the matter to the Chief of Staff if they continue to spread false information.</label></li>
+						<li style="width:50%"><a href="javascript:void(0);" id="buttonDecide" class="btnDecide" title="Decide"></a></li>
+					</ul>
+				</form>
+			</div>
+			<audio id="audio00">
+				<source src="audio/LC0220_Narrator_0.mp3">
+			</audio>
+			<audio id="audio01">
+				<source src="audio/LC0220_Narrator_1.mp3">
+			</audio>
+			<audio id="audio02">
+				<source src="audio/LC0220_Narrator_2.mp3">
+			</audio>
+		</div>
+	</div>
+</div>
+<div id="navigationButtons">
+	<nav>
+		<div id="nextNavBar" class="sideNavBar"><a href="javascript:void(0);" id="btnNextID" class="btnNext" title="Next"></a></div>
+		<div id="backNavBar" class="sideNavBar"><a href="javascript:void(0);" id="btnBackID" class="btnBack" title="Back"></a></div>
+		<div class="navblock">
+			<p class="promptText" id="prompt_text" align="center">Select a response.</p>
+			<span id="ContentReviewDiv" style="display:none;float:left;"></span>
+
+
+			<div id="bottomButtons"></div>
+		</div>
+	</nav>
+</div>
+</body>
+</html>

@@ -29,6 +29,8 @@ const CourseSideBar = ({ onContentChange }) => {
             <li>
               <button onClick={() => onContentChange("quiz.html")}>Quiz</button>
             </li>
+
+            
           </ul>
         </div>
       </div>

@@ -1,0 +1,248 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Leading Change</title>
+	<link rel="stylesheet" type="text/css" href="css/styles.css">
+
+	<script type="text/javascript" src="javascript/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="javascript/main.js"></script>
+	<script type="text/javascript">
+		pageNext = "LC0380";
+		pageBack = "LC0330";
+		nextActive = false;
+		backActive = true;
+
+		var $videoFrameChoice;
+		var $videoChoice;
+		//var $placeHolder;
+
+		var eventSeq = 0;
+		var popupHeader = "";
+		var popupText = "";
+
+		$(document).ready(function () {
+			setTimeout(function () {
+				enterPage();
+				$videoFrameChoice = $("#videoFrame1");
+				$videoChoice = $("#video01");
+			}, 50);
+			/*$("#vidSrc").after(function () {
+				var dispCC = (sessionStorage.showCC == 1) ? " default" : "";
+				//alert("<track id="vidTrk" src='video/CC_0350b.vtt' kind='subtitles' srclang='en' label='English'" + dispCC +">");
+				return "<track id='vidTrk' src='video/CC_0350b.vtt' kind='subtitles' srclang='en' label='English'" + dispCC + ">";
+			});*/
+			$("#audio01").on({
+				"ended": function () {
+					$("#phone_sprite").css("background-image", "url(imagesLsn/Phone.png)");
+					$("#prompt_text").text("Select Next to continue.");
+					nextInactiveMsg = "End of demo. Select Back to view another choice.";
+				}, "pause": function () {
+					this.currentTime = 0;
+				}
+			});
+
+			$("video").on("ended", function () {
+				window.setTimeout(function () {
+					if (eventSeq == 0) {
+						//$("#prompt_text").text("A phone call to Shannon to update her may be the next step.  Select the phone to give her a call.");
+						$("#prompt_text").text("Now select the door again to meet with Shannon in person.");
+						//activateNext();
+						$videoFrameChoice.hide("slow", function () {
+							$("#officeFrame").show();
+							/*$("#vidSrc").after(function(){
+							 var dispCC = (sessionStorage.showCC == 1) ? " default" : "";
+							 //alert("<track id="vidTrk" src='video/CC_0350b.vtt' kind='subtitles' srclang='en' label='English'" + dispCC +">");
+							 return "<track id="vidTrk" src='video/CC_0350b.vtt' kind='subtitles' srclang='en' label='English'" + dispCC +">";
+							 });*/
+							window.setTimeout(function () {
+								$("#audio03").trigger("play");
+								$("#woman_sprite").css("background-image", "url(imagesLsn/Shannon_door.png)").delay(50).show();
+								//$("#phone_sprite").css("background-image", "url(imagesLsn/Phone_voicemail.png)");
+								eventSeq++;
+							}, 1000);
+						});
+					}
+					if (eventSeq >= 1) {
+						$videoFrameChoice.hide("slow", function () {
+							$("#officeFrame").show();
+							window.setTimeout(function () {
+								$("#woman_sprite").hide();
+								//$("#prompt_text").text("Select Next to continue.");
+								activateNext();
+								//nextInactiveMsg = "End of demo. Select Back to view another choice.";
+							}, 750);
+						});
+					}
+					//$("#videoFrame").css("visibility","hidden");
+				}, 1500);
+			});
+
+			$(".officeItem").on("click", function (event) {
+				var cTarget = event.target.id;
+				switch (cTarget) {
+					case "woman_sprite":
+//					case "email_sprite":
+//					case "email_content":
+						//alert("You have selected the PC");
+						if (eventSeq == 0) {
+//							popupHeader = "Video Placeholder";
+//							popupText = "<em>A video of Nina will go here<\/em>";
+//							startPopUp3(popupHeader, popupText, 450, 300);
+							$("#prompt_text").html("&nbsp;");
+							$("#woman_sprite").hide();
+							$("#officeFrame").hide();
+							$("audio")[0].pause(); //if selected during second event
+							$("#audio01").currentTime = 0;
+							//$('#animation1wl audio').pause()
+							$videoFrameChoice.show("slow");  //reactivate for video
+							//$("#placeholderFrame").show("slow");
+							//$("#videoFrame").css("visibility","visible");
+							window.setTimeout(function () {
+								$("#video01").trigger("play");
+							}, 750);  //reactivate for video
+							//delete below for video
+							/*window.setTimeout(function () {
+							 $("#prompt_text").text("Now select the door again to meet with Shannon in person.");
+							 //activateNext();
+							 $("#placeholderFrame").hide("slow", function () {
+							 $("#officeFrame").show();
+							 $("#vidSrc").after(function(){
+							 var dispCC = (sessionStorage.showCC == 1) ? " default" : "";
+							 //alert("<track id="vidTrk" src='video/CC_0350b.vtt' kind='subtitles' srclang='en' label='English'" + dispCC +">");
+							 return "<track id="vidTrk" src='video/CC_0350b.vtt' kind='subtitles' srclang='en' label='English'" + dispCC +">";
+							 });
+							 window.setTimeout(function () {
+							 $("#audio03").trigger("play");
+							 $("#woman_sprite").css("background-image", "url(imagesLsn/Shannon_door.png)").delay(50).show();
+							 //$("#phone_sprite").css("background-image", "url(imagesLsn/Phone_voicemail.png)");
+							 eventSeq++;
+							 }, 1000);
+							 });
+							 }, 2500);*/
+						}
+						if (eventSeq >= 1) {
+//							popupHeader = "Phone Message Placeholder";
+//							popupText = "<em>A recorded phone message from Lisa will go here.<\/em>";
+//							startPopUp3(popupHeader, popupText, 450, 300);
+							//$("#phone_sprite").css("background-image", "url(imagesLsn/Phone_on.png)");
+							//$("#audio01").trigger("play");
+							//$("#vidSrc").attr("src", "video/LC0350b.mp4");
+							//$("#vidTrk").attr("src", "video/CC_LC0350b.vtt");
+							//$("#placeholderNote").html("&nbsp;");
+							//$("video").load();
+							$("#officeFrame").hide();
+							$videoFrameChoice = $("#videoFrame2");
+							$videoFrameChoice.show("slow");
+							//$("#placeholderFrame").show("slow", function () {
+							window.setTimeout(function () {
+								$("#video02").trigger("play");
+							}, 750);
+							$("#prompt_text").html("&nbsp;");
+							/*window.setTimeout(function () {
+							 $("#placeholderFrame").hide("slow", function () {
+							 $("#officeFrame").show();
+							 window.setTimeout(function () {
+							 $("#woman_sprite").hide();
+							 $("#prompt_text").text("Select Next to continue.");
+							 nextInactiveMsg = "End of demo. Select Back to view another choice.";
+							 }, 750);
+							 });
+							 }, 2500);*/
+						}
+						break;
+				}
+				//eventSeq++;
+
+
+				/*case "PC_sprite":
+				 alert("You have selected the desktop computer. Please try again.");
+				 break;*/
+
+				return false;
+			});
+			window.setTimeout(function () {
+				$("#woman_sprite").css("background-image", "url(imagesLsn/Nina_door.png)").show();
+				$("#audio03").trigger("play");
+				$("#prompt_text").html("Select the door to ask Nina to come in for a chat.");
+			}, 1000);
+		});
+
+		function enterPageLocal() {
+		}
+	</script>
+</head>
+<body>
+<div class="contentTop">
+	<div id="contentBody"><h1 id="courseHeader"></h1>
+
+		<div id="divProgress"></div>
+
+		<div class="headerBlock"><h2>The Outcome</h2>
+
+			<!--<div id="leadText1"><strong>Your choice:</strong> Build a business case by compiling data and research that demonstrates how purchasing the upgrade aligns with your vision for the System.</div>-->
+			<!--<div id="leadText2">What happens: It’s time to speak with Victoria to get her input.</div>-->
+		</div>
+
+		<div id="scrollBlock" class="textBlock">
+
+			<div id="officeFrame">
+				<!--<img src="imagesLsn/Office.png" height="521" width="803">-->
+				<div id="PC_sprite" class="officeItem"></div>
+				<!--<div id="email_sprite" class="officeItem" style="width:278px; height: 66px; background-image: url(imagesLsn/email_Shannon_1.png); position: absolute; left:534px; top:40px; cursor:pointer;"></div>-->
+				<div id="phone_sprite" class="officeItem"></div>
+				<div id="woman_sprite" class="officeItem"></div>
+
+				<div id="email_content" class="officeItem">&nbsp;</div>
+			</div>
+			<div id="videoFrame1" style="display: none; text-align: center;">
+				<video id="video01" controls preload="auto">
+					<source id="vidSrc1" src="video/LC0350.mp4" type="video/mp4">
+					<script type="text/javascript">if (sessionStorage.showCC == 1) {
+						document.write('<track id="vidTrk1" src="video/CC_LC0350.vtt" kind="subtitles" srclang="en" label="English" default>')
+					} else {
+						document.write('<track id="vidTrk1" src="video/CC_LC0350.vtt" kind="subtitles" srclang="en" label="English">')
+					}</script>
+				</video>
+				<!--<p id="placeholderNote" style="text-align: center">This is a placeholder video.</p>-->
+			</div>
+			<div id="videoFrame2" style="display: none; text-align: center;">
+				<video id="video02" controls preload="auto">
+					<source id="vidSrc2" src="video/LC0350b.mp4" type="video/mp4">
+					<script type="text/javascript">if (sessionStorage.showCC == 1) {
+						document.write('<track id="vidTrk2" src="video/CC_LC0350b.vtt" kind="subtitles" srclang="en" label="English" default>')
+					} else {
+						document.write('<track id="vidTrk2" src="video/CC_LC0350b.vtt" kind="subtitles" srclang="en" label="English">')
+					}</script>
+				</video>
+				<!--<p id="placeholderNote" style="text-align: center">This is a placeholder video.</p>-->
+			</div>
+
+			<audio id="audio01">
+				<source src="audio/LC_0350.mp3">
+			</audio>
+			<audio id="audio02">
+				<source src="audio/iPhone_SFX1.mp3">
+			</audio>
+			<audio id="audio03">
+				<source src="audio/Knocking.mp3">
+			</audio>
+		</div>
+	</div>
+</div>
+<div id="navigationButtons">
+	<nav>
+		<div id="nextNavBar" class="sideNavBar"><a href="javascript:void(0);" id="btnNextID" class="btnNext" title="Next"></a></div>
+		<div id="backNavBar" class="sideNavBar"><a href="javascript:void(0);" id="btnBackID" class="btnBack" title="Back"></a></div>
+		<div class="navblock">
+			<p class="promptText" id="prompt_text" align="center">&nbsp;</p>
+			<span id="ContentReviewDiv" style="display:none;float:left;"></span>
+
+			<div id="bottomButtons"></div>
+		</div>
+	</nav>
+</div>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Leading Change</title>
+	<link rel="stylesheet" type="text/css" href="css/styles.css">
+
+	<script type="text/javascript" src="javascript/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="javascript/main.js"></script>
+	<script type="text/javascript">
+		if (getQuerystring("unit") != "") sessionStorage.unitNumber = Number(getQuerystring("unit"));
+
+		var w, h;
+		//Resize Window
+		if (!screen) {
+			w = 1000;
+			h = 680;
+		} else {
+			w = screen.availWidth;
+			h = screen.availHeight;
+
+			//replicate Jessica's Mac
+			//w = 1280;
+			//h = 732;
+
+			if (w > h * 1.4) w = h * 1.4;
+		}
+		try {
+			window.resizeTo(w, h);
+		} catch (e) {
+		}
+		try {
+			window.moveTo((screen.availWidth - w) / 2, (screen.availHeight - h) / 2);
+		} catch (e) {
+		}
+		if (window.screenX == screen.width) try {
+			window.moveTo(screen.width + (screen.availWidth - w) / 2, (screen.availHeight - h) / 2);
+		} catch (e) {
+		}
+
+		if (sessionStorage.unitNumber == 1) {
+			pageNext = "U1S0005";
+		} else if (sessionStorage.unitNumber == 2) {
+			pageNext = "U2S0010";
+		} else if (sessionStorage.unitNumber == 3) {
+			pageNext = "LC0001";
+		}
+		//pageNext = "U2S0270";
+
+		sessionStorage.showCC = 0;
+		sessionStorage.usingScreenReader = 0;
+
+		$(document).ready(function () {
+			setTimeout(function () {
+				enterPageLocal();
+			}, 50);
+		});
+
+		function enterPageLocal() {
+			$("#divProgress").text("Unit " + sessionStorage.unitNumber);
+
+//			if (opener.SCORMuser.lsnStatus == "completed") {
+//			} else if (opener.SCORMuser.pageBookmark == "") {
+//			} else if (opener.SCORMuser.pageBookmark == "start_unit") {
+//			} else {
+//				pageNext = opener.SCORMuser.pageBookmark + ".html";
+//			}
+			document.location.href = pageNext + ".html";
+		}
+		function getQuerystring(key) {
+			key = key.replace("/[\[]/", "\\\[").replace("/[\]]/", "\\\]");
+			var regex = new RegExp("[\\?&]" + key + "=([^&#]*)");
+			var qs = regex.exec(window.location.href);
+			//return qs[1];
+			try {
+				return qs[1];
+			} catch (e) {
+				return "";
+			}
+		}
+	</script>
+</head>
+<body>
+x
+</body>
+</html>

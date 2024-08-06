@@ -1,0 +1,245 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Leading Change</title>
+	<link rel="stylesheet" type="text/css" href="css/styles.css">
+
+	<script type="text/javascript" src="javascript/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="javascript/main.js"></script>
+	<script type="text/javascript">
+		//pageNext = "LC0260"; //for C, or LC0270 for D
+		/*if (parent.choice_0220 == "C") {
+			pageNext = "LC0260";
+		}*/
+		if (parent.choice_0220 == "D") {
+			pageNext = "LC0270";
+		} else {
+			pageNext = "LC0260";
+		}
+		pageBack = "LC0220";
+		nextActive = false;
+		backActive = true;
+
+		var $videoFrameChoice;
+		var $videoChoice;
+		var $placeHolder;
+
+		var completions = [0,0,0];
+		var navTextDefault = "Select each person to hear what they have to say about the rumors.";
+
+		var eventSeq = -1;
+		var popupHeader = "";
+		var popupText = "";
+
+		$(document).ready(function () {
+			setTimeout(function () {
+				enterPage();
+				parent.seen_0250 = true;
+				window.setTimeout(function () {
+					$("#audio01").trigger("play");
+				}, 1000);
+			}, 50);
+
+			$("video").on("ended", function () {
+				$videoFrameChoice.hide("slow", function () {
+					$("#questionBlock").show();
+					window.setTimeout(function () {
+						$("#prompt_text").text(navTextDefault);
+					}, 500);
+				});
+			});
+
+			$("#audio01").on({
+				"ended": function () {
+					window.setTimeout(function () {
+						$("#prompt_text").text(navTextDefault);
+						eventSeq = 0;
+					}, 500);
+				}
+			});
+
+			$(".selectPerson").on("click", function (event) {
+				var cTarget = event.target.id;
+				var vTarget = "";
+				var vSubtitle = "";
+				var vCaption = "";
+				switch (cTarget) {
+					case "btnZach":
+						vTarget = "LC0250a.mp4";
+						vCaption = "Zachary";
+						vSubtitle = "CC_LC0250a.vtt";
+						completions[0]=1;
+						$videoFrameChoice = $("#videoFrame1");
+						$videoChoice = $("#video01");
+						$placeHolder = $("#placeholderNote1");
+						break;
+					case "btnJane":
+						vTarget = "LC0250b.mp4";
+						vCaption = "Jane";
+						vSubtitle = "CC_LC0250b.vtt";
+						completions[1]=1;
+						$videoFrameChoice = $("#videoFrame2");
+						$videoChoice = $("#video02");
+						$placeHolder = $("#placeholderNote2");
+						break;
+					case "btnBrian":
+						vTarget = "LC0250c.mp4";
+						vCaption = "Brian";
+						vSubtitle = "CC_LC0250c.vtt";
+						completions[2]=1;
+						$videoFrameChoice = $("#videoFrame3");
+						$videoChoice = $("#video03");
+						$placeHolder = $("#placeholderNote3");
+						break;
+				}
+				if(sessionStorage.showCC==1) {
+					$("#vidTrk").attr("default", "default");
+				}
+				if ($.inArray(0,completions) == -1){
+					activateNext();
+					navTextDefault = "Select Next to continue.";
+				}
+				if (vTarget == "") {
+					return false;
+				} else {
+					//$("#vidSrc").attr("src", "video/" + vTarget);
+					//$("#vidTrk").attr("src", "video/" + vSubtitle);
+					//$("video")[0].load();
+					$("#prompt_text").html("&nbsp;");
+					//$("#placeholderNote").text(vCaption);
+					$placeHolder.text(vCaption);
+					$("#questionBlock").hide();
+					$("audio")[0].pause(); //if selected during second event
+					$("#audio01").currentTime = 0;
+					$videoFrameChoice.show("slow");  //reactivate for video
+					//$("#videoFrame").show("slow");
+					window.setTimeout(function () {
+						$videoChoice.trigger("play");
+					}, 750);
+				}
+			});
+		});
+
+		function enterPageLocal() {
+		}
+	</script>
+	<style type="text/css">
+		#btnZach,#btnJane,#btnBrian {
+			display: block;
+			width: 324px;
+			height:324px;
+			margin-left:5px;
+			margin-right:5px;
+		}
+		#btnZach {
+			background-image:url("imagesLsn/LC0250a.png");
+		}
+		#btnJane {
+			background-image:url("imagesLsn/LC0250b.png");
+		}
+		#btnBrian {
+			background-image:url("imagesLsn/LC0250c.png");
+		}
+		td {
+			text-align:center;
+			font-family:sans-serif;
+			font-weight: bold;
+			font-size:1.1em;
+		}
+
+		@media only screen and (max-width: 1116px) {
+			#btnZach,#btnJane,#btnBrian {
+				width: 243px;
+				height: 243px;
+				background-size: 243px 243px;
+			}
+		}
+	</style>
+</head>
+<body>
+<div class="contentTop">
+	<div id="contentBody"><h1 id="courseHeader"></h1>
+
+		<div id="divProgress"></div>
+
+		<div class="headerBlock"><h2>The Outcome</h2>
+
+			<!--<div id="leadText1"><strong>Your choice:</strong> Talk to more people to find out more information about the rumors, including the source.</div>-->
+			<!--<div id="leadText2">You decide to talk to three colleagues about the situation—Zachary, Jane, and Brian.</div>-->
+		</div>
+
+		<div id="scrollBlock" class="textBlock">
+
+			<!--<div id="officeFrame">
+				<div id="PC_sprite" class="officeItem"></div>
+
+				<div id="email_sprite" class="officeItem"></div>
+				<div id="phone_sprite" class="officeItem" ></div>
+				<div id="woman_sprite" class="officeItem"></div>
+
+				<div id="email_content" class="officeItem">&nbsp;</div>
+				<div id="text_msg" class="officeItem"></div>
+			</div>-->
+			<div id="questionBlock" >
+				<table style="border:none; margin-left:auto; margin-right:auto;">
+					<tr>
+						<td><a id="btnZach" class="selectPerson" href="javascript:void(0);"></a></td>
+						<td><a id="btnJane" class="selectPerson" href="javascript:void(0);"></a></td>
+						<td><a id="btnBrian" class="selectPerson" href="javascript:void(0);"></a></td>
+					</tr>
+					<tr>
+						<td>Zachary</td><td>Jane</td><td>Brian</td>
+					</tr>
+				</table>
+			</div>
+			<div id="videoFrame1" style="display: none; text-align: center;">
+				<video id="video01" controls preload="auto">
+					<source id="vidSrc1" src="video/LC0250a.mp4" type="video/mp4">
+					<script type="text/javascript">if(sessionStorage.showCC==1){document.write('<track id="vidTrk1" src="video/CC_LC0250a.vtt" kind="subtitles" srclang="en" label="English" default>')} else {document.write('<track id="vidTrk1" src="video/CC_LC0250a.vtt" kind="subtitles" srclang="en" label="English">')}</script>
+				</video>
+				<p id="placeholderNote1" style="text-align: center; font-weight: bold; font-size:1.1em;"></p>
+			</div>
+			<div id="videoFrame2" style="display: none; text-align: center;">
+				<video id="video02" controls preload="auto">
+					<source id="vidSrc2" src="video/LC0250b.mp4" type="video/mp4">
+					<script type="text/javascript">if(sessionStorage.showCC==1){document.write('<track id="vidTrk2" src="video/CC_LC0250b.vtt" kind="subtitles" srclang="en" label="English" default>')} else {document.write('<track id="vidTrk2" src="video/CC_LC0250b.vtt" kind="subtitles" srclang="en" label="English">')}</script>
+				</video>
+				<p id="placeholderNote2" style="text-align: center; font-weight: bold; font-size:1.1em;"></p>
+			</div>
+			<div id="videoFrame3" style="display: none; text-align: center;">
+				<video id="video03" controls preload="auto">
+					<source id="vidSrc3" src="video/LC0250c.mp4" type="video/mp4">
+					<script type="text/javascript">if(sessionStorage.showCC==1){document.write('<track id="vidTrk3" src="video/CC_LC0250c.vtt" kind="subtitles" srclang="en" label="English" default>')} else {document.write('<track id="vidTrk3" src="video/CC_LC0250c.vtt" kind="subtitles" srclang="en" label="English">')}</script>
+				</video>
+				<p id="placeholderNote3" style="text-align: center; font-weight: bold; font-size:1.1em;"></p>
+			</div>
+
+			<audio id="audio01">
+				<source src="audio/LC0250_Narrator.mp3">
+			</audio>
+			<audio id="audio02">
+				<source src="audio/Knocking.mp3">
+			</audio>
+			<audio id="audio03">
+				<source src="audio/Knocking.mp3">
+			</audio>
+		</div>
+	</div>
+</div>
+<div id="navigationButtons">
+	<nav>
+		<div id="nextNavBar" class="sideNavBar"><a href="javascript:void(0);" id="btnNextID" class="btnNext" title="Next"></a></div>
+		<div id="backNavBar" class="sideNavBar"><a href="javascript:void(0);" id="btnBackID" class="btnBack" title="Back"></a></div>
+		<div class="navblock">
+			<p class="promptText" id="prompt_text" align="center">&nbsp;</p>
+			<span id="ContentReviewDiv" style="display:none;float:left;"></span>
+
+			<div id="bottomButtons"></div>
+		</div>
+	</nav>
+</div>
+</body>
+</html>

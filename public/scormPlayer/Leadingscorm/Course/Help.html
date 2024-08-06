@@ -1,0 +1,68 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="css/styles.css">
+	<script type="text/javascript">
+	</script>
+	<style type="text/css">
+		html {
+			padding:0;
+			margin:0;
+		}
+		body {
+			padding: 0 30px 0 30px;
+			margin:0;
+			/* background-color: #85B6E3; */
+			background-color: #D8E4ED;
+			color: #000000;
+			font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+			overflow-y: auto;
+		}
+
+		h1 {
+			color: #0051A2;
+			margin-top: 0;
+			margin-bottom: 10px;
+		}
+
+		li {
+			margin-bottom: 15px;
+		}
+
+		.prompt {
+			color: #0051A2;
+			font-weight: bold;
+			text-align: center;
+		}
+	</style>
+	<title>Leading Change Course Help Screen</title>
+</head>
+<body>
+
+<img src="images/LC_Title.png" width="337" height="64" style="margin: 10px 0">
+
+<div style="text-align: center"><h1>Course Navigation</h1></div>
+
+<div id="videoFrame" style="text-align: center;">
+	<video controls preload="auto">
+		<source id="vidSrc" src="video/LC_Help.mp4" type="video/mp4">
+		<script type="text/javascript">if (sessionStorage.showCC == 1) {
+			document.write('<track id="vidTrk" src="video/CC_LC_Help.vtt" kind="subtitles" srclang="en" label="English" default>')
+		} else {
+			document.write('<track id="vidTrk" src="video/CC_LC_Help.vtt" kind="subtitles" srclang="en" label="English">')
+		}</script>
+	</video>
+	<p id="placeholderNote" style="text-align: center">Select the link if you would like a <a href="LC_Course_PDF.pdf" target="_blank">text-only version of the course</a>. This printable Adobe Acrobat PDF file serves as the accessible version of the course.</p>
+</div>
+
+
+<p class="promptText" id="prompt_text" align="center" style="margin-top:30px; margin-bottom: 0">Select Play to watch the video. When you are finished, close this window to return to the course.</p>
+
+<div style="margin-top:5px; margin-bottom:0; padding:0; text-align: center">
+	<button type="button" onclick="window.close(); return false;">Close this window</button>
+</div>
+</body>
+</html>

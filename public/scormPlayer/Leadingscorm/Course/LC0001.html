@@ -1,0 +1,72 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Leading Change</title>
+	<link rel="stylesheet" type="text/css" href="css/styles.css">
+
+	<script type="text/javascript" src="javascript/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="javascript/main.js"></script>
+	<script type="text/javascript">
+		pageNext = "LC0005";
+		pageBack = "";
+		nextActive = true;
+		backActive = false;
+
+		var popupHeader = "";
+		var popupText = "";
+
+		$(document).ready(function () {
+			setTimeout(function () {
+				enterPage();
+			}, 50);
+
+			$("video").on("ended", function () {
+				activateNext();
+			});
+		});
+
+		function enterPageLocal() {
+		}
+	</script>
+</head>
+<body>
+<div class="contentTop">
+	<div id="contentBody"><h1 id="courseHeader"></h1>
+
+		<div id="divProgress"></div>
+
+		<div class="headerBlock"><h2>Course Navigation</h2>
+
+			<!--<div id="leadText1"><strong>Mission:</strong> To pioneer cutting-edge technology and services that will transform the Federal Government.</div>-->
+			<!--<div id="leadText2">xxxxxxxxxxxxxxxxxxxxx</div>-->
+		</div>
+
+		<div id="scrollBlock" class="textBlock">
+
+			<div id="videoFrame" style="text-align: center;">
+				<video controls preload="auto">
+					<source id="vidSrc" src="video/LC0001.mp4" type="video/mp4">
+					<script type="text/javascript">if(sessionStorage.showCC==1){document.write('<track id="vidTrk" src="video/CC_LC0001.vtt" kind="subtitles" srclang="en" label="English" default>')} else {document.write('<track id="vidTrk" src="video/CC_LC0001.vtt" kind="subtitles" srclang="en" label="English">')}</script>
+				</video>
+				<p id="placeholderNote" style="text-align: center">Select the link if you would like a <a href="LC_Course_PDF.pdf" target="_blank">text-only version of the course</a>. This printable Adobe Acrobat PDF file serves as the accessible version of the course.</p>
+			</div>
+		</div>
+	</div>
+</div>
+<div id="navigationButtons">
+	<nav>
+		<div id="nextNavBar" class="sideNavBar"><a href="javascript:void(0);" id="btnNextID" class="btnNext" title="Next"></a></div>
+		<div id="backNavBar" class="sideNavBar"><a href="javascript:void(0);" id="btnBackID" class="btnBack" title="Back"></a></div>
+		<div class="navblock">
+			<p class="promptText" id="prompt_text" align="center">Select Play to watch the video.</p>
+			<span id="ContentReviewDiv" style="display:none;float:left;"></span>
+
+			<div id="bottomButtons"></div>
+		</div>
+	</nav>
+</div>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" epub:prefix="vst: http://vitalsource.com/">
+<head>
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+<title>SCORM</title>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="scorm.js"></script>
+</head>
+<body style="padding:0;margin:0;">
+<span epub:type="pagebreak" id="index-page" title="index-page" />
+<iframe id="scormframe" style="width:100%;height:100%;position:absolute;display:none;" class="vst-ignore vst-skip"></iframe>
+<div    id="loading"    style="width:100%;height:100%;position:absolute;" >
+  <div class="inform-content">
+    <div class="header">
+ 
+        <span class="title">Loading...</span>
+    </div>
+    <div class="notification-text">
+        <div class="notification">
+            Please wait a moment<br/>
+        </div>
+    </div>
+  </div>
+</div>
+<div    id="error" style="width:100%;height:100%;position:absolute;display:none;" >
+  <div class="inform-content">
+    <div class="header">
+        <span class="title">Error</span>
+    </div>
+    <div class="notification-text">
+        <div class="notification">
+          Please click the home icon to return to the library<br/>
+        </div>
+    </div>
+  </div>
+</div>
+<div    id="done"       style="width:100%;height:100%;position:absolute;display:none;" >
+  <div class="inform-content">
+    <div class="header">
+        <span class="title">Complete</span>
+    </div>
+    <div class="notification-text">
+        <div class="notification">
+            Please click the home icon to return to the library<br/>
+        </div>
+    </div>
+  </div>
+</div>
+<div    id="scormdebug" style="width:50%;height:50%;position:absolute;display:none;top:0;left:0;overflow-x:scroll;border: 1px solid black;" >DEBUG</div>
+
+</body>
+</html>

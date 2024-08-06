@@ -1,0 +1,157 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Leading Change</title>
+	<link rel="stylesheet" type="text/css" href="css/styles.css">
+
+	<script type="text/javascript" src="javascript/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="javascript/main.js"></script>
+	<script type="text/javascript">
+		pageNext = "LC0020";
+		pageBack = "LC0005";
+		nextActive = false;
+		backActive = true;
+
+		var eventSeq = 0;
+		var popupHeader = "";
+		var popupText = "";
+
+		//$("#phone_sprite").css("background-image", "url(imagesLsn/Phone.png)");
+
+		/*$("#placeholderFrame").show("slow", function () {
+			$("#prompt_text").html("&nbsp;");
+			window.setTimeout(function () {
+				$("#placeholderFrame").hide("slow", function () {
+					$("#officeFrame").show();
+					window.setTimeout(function () {
+						$("#woman_sprite").hide();
+						$("#prompt_text").text("Select Next to continue.");
+						nextInactiveMsg = "End of demo. Select Back to view another choice.";
+					}, 750);
+				});
+			}, 2500);
+		});*/
+
+		/*$("#officeFrame").hide();
+		$("#videoFrame").show("slow");
+		window.setTimeout(function () {
+			$("video").trigger("play");
+		}, 750);*/
+
+		/*popupText = "<strong>From:<\/strong> Shannon<br><strong>Subject:<\/strong> Software Upgrade<br><br>I understand that your office has moved forward on the purchase of the system upgrade without my permission. I halted this purchase because I have yet to see any evidence that this upgrade is cost-effective, and I am disappointed that you ignored my decision.<br><br>Send me a justification for the upgrade by COB today and I will review. Also, please include a progress update on the system to date. I will make a decision on whether or not the order needs to be cancelled.<br><br>&ndash;Shannon";
+		$("#email_content").html(popupText).show();
+		$("#email_sprite").hide();*/
+
+		//$("#email_sprite").show("slide", {direction: "right"});
+
+		//$("#woman_sprite").css("background-image", "url(imagesLsn/Shannon_door.png)").delay(50).show();
+
+		//$("#audio03").trigger("play");
+
+		/*window.setTimeout(function () {
+			//$("#phone_sprite").css("background-image", "url(imagesLsn/Phone_voicemail.png)");
+			eventSeq++;
+		}, 1000);*/
+
+		/*$("#videoFrame").hide("slow", function () {
+			$("#officeFrame").show();
+			window.setTimeout(function () {
+				/!*$("#audio03").trigger("play");
+				$("#woman_sprite").css("background-image", "url(imagesLsn/Shannon_door.png)").delay(50).show();
+				//$("#phone_sprite").css("background-image", "url(imagesLsn/Phone_voicemail.png)");
+				eventSeq++;*!/
+			}, 1000);
+		});*/
+
+		$(document).ready(function () {
+			setTimeout(function () {
+				enterPage();
+			}, 50);
+
+			$(".officeItem").on("click", function (event) {
+				var cTarget = event.target.id;
+				switch (cTarget) {
+					case "PC_sprite":
+						if (eventSeq == 0) {
+							$("#prompt_text").html("&nbsp;");
+							popupText = "The Secretary of your Department has recently issued her Strategic Plan for the next 4 years, and one of her top priorities is to implement a <strong>Human Resources Information Technology (HRIT) Integration Plan<\/strong> that will transform the agency’s outdated and inefficient paper-based processes to a more streamlined digital-based approach. The goal of this initiative is to capitalize on the advancements in technology to automate all HR processes and give employees access and control over their data.<br><br>The Secretary has appointed you as the <strong>Executive Director<\/strong> of the newly established <strong>Office of Human Resources and Technology (OHRT)<\/strong> to lead this change effort. You have been allocated a <strong>budget of $1.5 millio<\/strong>n to complete the HRIT Integration Plan, which includes the <strong>development of an online HRIT System<\/strong> that will capture information on each of the agency’s 6,500 employees. There is a tight timeline, as the end of the fiscal year will put a halt to all Web development. You have <strong><em>6 months<\/em><\/strong> to launch this system.<br><br>While you manage multiple teams and multiple projects in this role, <strong>your specific challenge here is to lead the HRIT System Team to success.<\/strong> Be sure to check your email and voicemail, and read over any other materials that you find. Then you’ll be ready to meet your team.";
+							$("#email_content").html(popupText).show();
+							window.setTimeout(function () {
+								activateNext();
+								eventSeq++;
+							}, 1000);
+						}
+						break;
+				}
+				return false;
+			});
+		});
+
+		function enterPageLocal() {
+		}
+	</script>
+</head>
+<body>
+<div class="contentTop">
+	<div id="contentBody"><h1 id="courseHeader"></h1>
+
+		<div id="divProgress"></div>
+
+		<div class="headerBlock"><h2>Agency: Department of Innovation and Technology (DIT)</h2>
+
+			<!--<div id="leadText1"><strong>Mission:</strong> To pioneer cutting-edge technology and services that will transform the Federal Government.</div>-->
+			<!--<div id="leadText2">xxxxxxxxxxxxxxxxxxxxx</div>-->
+		</div>
+
+		<div id="scrollBlock" class="textBlock">
+
+			<div id="officeFrame">
+				<div id="PC_sprite" class="officeItem"></div>
+
+				<div id="email_sprite" class="officeItem"></div>
+				<div id="phone_sprite" class="officeItem" ></div>
+				<div id="woman_sprite" class="officeItem"></div>
+
+				<div id="email_content" class="officeItem">&nbsp;</div>
+				<div id="text_msg" class="officeItem"></div>
+			</div>
+			<div id="videoFrame" style="display: none; text-align: center;">
+				<video controls preload="auto">
+					<source id="vidSrc" src="video/LC_xxxx.mp4" type="video/mp4">
+					<track id="vidTrk" src='video/CC_LC_xxxx.vtt' kind='subtitles' srclang='en' label='English'>
+				</video>
+				<p id="placeholderNote" style="text-align: center">This is a placeholder video.</p>
+			</div>
+			<div id="placeholderFrame" style="display: none; text-align: center; height:220px">
+				<p style="margin-top:130px; font-size:2em">A video will be placed here.</p>
+			</div>
+
+			<audio id="audio01">
+				<source src="audio/LC_0350.mp3">
+			</audio>
+			<audio id="audio02">
+				<source src="audio/iPhone_SFX1.mp3">
+			</audio>
+			<audio id="audio03">
+				<source src="audio/Knocking.mp3">
+			</audio>
+		</div>
+	</div>
+</div>
+<div id="navigationButtons">
+	<nav>
+		<div id="nextNavBar" class="sideNavBar"><a href="javascript:void(0);" id="btnNextID" class="btnNext" title="Next"></a></div>
+		<div id="backNavBar" class="sideNavBar"><a href="javascript:void(0);" id="btnBackID" class="btnBack" title="Back"></a></div>
+		<div class="navblock">
+			<p class="promptText" id="prompt_text" align="center">Select the computer to learn more about this mission and what your role will be.</p>
+			<span id="ContentReviewDiv" style="display:none;float:left;"></span>
+
+			<div id="bottomButtons"></div>
+		</div>
+	</nav>
+</div>
+</body>
+</html>

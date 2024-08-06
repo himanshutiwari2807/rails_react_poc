@@ -1,52 +1,55 @@
-import React from "react";
-import { Image } from "react-bootstrap";
+import React, { useEffect, useRef } from "react";
 
 const CourseSample = () => {
+  const iframeRef = useRef(null);
+
+  useEffect(() => {
+    const loadScript = (src) => {
+      return new Promise((resolve, reject) => {
+        const script = document.createElement("script");
+        script.src = src;
+        script.onload = () => resolve();
+        script.onerror = (error) => reject(error);
+        document.body.appendChild(script);
+      });
+    };
+
+    const loadDependencies = async () => {
+      try {
+        // Load jQuery
+        await loadScript("/scormPlayer/jquery-3.2.1.min.js");
+        console.log("jQuery loaded");
+
+        // Load scorm.js
+        await loadScript("/scormPlayer/scorm.js");
+        console.log("scorm.js loaded");
+
+        // Ensure loadSCORM is called after scorm.js is loaded
+        if (typeof window.loadSCORM === "function") {
+          window.loadSCORM((resourceUrl) => {
+            // Construct the final URL for the iframe
+            const finalUrl = `/scormPlayer/Leadingscorm/${resourceUrl}`;
+            if (iframeRef.current) {
+              iframeRef.current.src = finalUrl;
+            }
+          });
+        } else {
+          console.error("loadSCORM function is not defined");
+        }
+      } catch (error) {
+        console.error("Error loading scripts", error);
+      }
+    };
+
+    loadDependencies();
+  }, []);
+
   return (
-    <>
-      <div>
-        <Image src="../../assets/images/Course-info.svg" alt="sample"/>
-        {/* <h3>Intermediate CSS: Layout and Positioning</h3>
-
-        <p>
-          One of the best ways to start coding is by building websites. Whether
-          you want to tweak your business’s site, hone your web development
-          skills, or learn to collaborate with developers, this Skill Path will
-          help you get there.
-          </p>
-          <p>
-            Learn important HTML and CSS fundamentals and practice your new
-            skills with real-world projects.re many variations of passages of
-            Lorem Ipsum available, but the majority have suffered alteration in
-            some form, by injected humour, or randomised words which don't look
-            even slightly believable.
-          </p>
-          <ul>
-            List Title:
-            <li>Read and write basic HTML</li>
-            <li>Implement basic web design principles</li>
-            <li>Build a static website</li>
-            <li>Launch a website with GitHub Pages</li>
-          </ul>
-          <Image src="../../assets/images/science-03.svg"></Image>
-      
-
-      <h4>Course Player Content:</h4>
-<table>
-    <tr>
-        <th>
-
-        </th>
-    </tr>
-    <tr>
-        <td>
-
-        </td>
-    </tr>
-</table> */}
-      
-      </div>
-    </>
+    <iframe
+      ref={iframeRef}
+      style={{ width: "100%", height: "100vh", border: "none" }}
+      title="SCORM Content"
+    />
   );
 };
 

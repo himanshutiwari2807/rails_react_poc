@@ -1,0 +1,142 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Leading Change</title>
+	<link rel="stylesheet" type="text/css" href="css/styles.css">
+
+	<script type="text/javascript" src="javascript/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="javascript/jquery-ui.js"></script>
+	<script type="text/javascript" src="javascript/main.js"></script>
+	<script type="text/javascript">
+		pageNext = "LC0520";
+		pageBack = "LC0480";
+		nextActive = false;
+		backActive = true;
+
+		var eventSeq = 0;
+		var popupHeader = "";
+		var popupText = "";
+
+		$(document).ready(function () {
+			setTimeout(function () {
+				enterPage();
+				window.setTimeout(function () {
+					$("#audio00").trigger("play");
+				}, 500);
+			}, 50);
+
+			$("#audio00").on({
+				"ended": function () {
+					window.setTimeout(function () {
+						//$("#woman_sprite").show();
+						$("#audio01").trigger("play");
+						$("#email_sprite").css("background-image", "url(imagesLsn/LC0500_email.png)").show("slide", {direction: "right"}, function(){
+							$("#prompt_text").html("Select the computer to read Shannon’s email.");
+							$("#PC_sprite").css("cursor","pointer");
+						});
+					}, 500);
+				}
+			});
+
+			$(".officeItem").on("click", function (event) {
+				var cTarget = event.target.id;
+				switch (cTarget) {
+					case "PC_sprite":
+					case "email_sprite":
+						if (eventSeq == 0) {
+							popupText = "Hi,<br><br>I just received a note from DFAC about the report you submitted. Evidently, they need the report in a different format. I understand you explained the situation with the HRIT System, but they are still expecting a report in 2 weeks. Can you please make sure that you submit the correct report to them on time? I hate to distract your team from making progress on implementing the new system, but it is a requirement.<br><br>Thank you,<br>&ndash;Shannon";
+							$("#PC_sprite").css("background-image", "url(imagesLsn/PC_e-mail.png)");
+							$("#email_sprite").hide();
+							$("#email_content2").html(popupText).show();
+							$("#email_to").text("You");
+							$("#email_from").text("Shannon");
+							$("#email_subject").text("DFAC Report");
+							$("#prompt_text").html("&nbsp;");
+
+							window.setTimeout(function () {
+								activateNext();
+							}, 1500);
+						}
+						if (eventSeq >= 1) {
+							$("#prompt_text").html("&nbsp;");
+						}
+						break;
+				}
+				return false;
+			});
+		});
+
+		function enterPageLocal() {
+		}
+	</script>
+</head>
+<body>
+<div class="contentTop">
+	<div id="contentBody"><h1 id="courseHeader"></h1>
+
+		<div id="divProgress"></div>
+
+		<div class="headerBlock"><h2>The Outcome</h2>
+
+			<!--<div id="leadText1"><strong>Your choice:</strong> Pull together your most recent progress report and presentation slides and send them over to DFAC.</div>-->
+			<!--<div id="leadText2">You send an email to DFAC explaining your situation, and attach a current progress report and recent presentation slides on the HRIT System. The next day you receive an email from Shannon.</div>-->
+		</div>
+
+		<div id="scrollBlock" class="textBlock">
+
+			<div id="officeFrame">
+				<div id="PC_sprite" class="officeItem"></div>
+
+				<div id="email_sprite" class="officeItem"></div>
+				<div id="phone_sprite" class="officeItem" ></div>
+				<div id="woman_sprite" class="officeItem"></div>
+
+				<div id="email_to" class="officeItem"></div>
+				<div id="email_from" class="officeItem"></div>
+				<div id="email_subject" class="officeItem"></div>
+				<div id="email_content2" class="officeItem"></div>
+				<div id="text_msg" class="officeItem"></div>
+			</div>
+			<div id="videoFrame" style="display: none; text-align: center;">
+				<video controls preload="auto">
+					<source id="vidSrc" src="video/LC_xxxx.mp4" type="video/mp4">
+					<track id="vidTrk" src='video/CC_LC_xxxx.vtt' kind='subtitles' srclang='en' label='English'>
+				</video>
+				<!--<p id="placeholderNote" style="text-align: center">This is a placeholder video.</p>-->
+			</div>
+			<div id="placeholderFrame" style="display: none; text-align: center; height:220px">
+				<p style="margin-top:130px; font-size:2em">A video will be placed here.</p>
+			</div>
+
+			<audio id="audio00">
+				<source src="audio/LC0500_Narrator.mp3">
+			</audio>
+			<audio id="audio01">
+				<source src="audio/email_1.mp3">
+			</audio>
+			<audio id="audio02">
+				<source src="audio/iPhone_SFX1.mp3">
+			</audio>
+			<audio id="audio03">
+				<source src="audio/Knocking.mp3">
+			</audio>
+		</div>
+	</div>
+</div>
+<div id="navigationButtons">
+	<nav>
+		<div id="nextNavBar" class="sideNavBar"><a href="javascript:void(0);" id="btnNextID" class="btnNext" title="Next"></a></div>
+		<div id="backNavBar" class="sideNavBar"><a href="javascript:void(0);" id="btnBackID" class="btnBack" title="Back"></a></div>
+		<div class="navblock">
+			<p class="promptText" id="prompt_text" align="center">&nbsp;</p>
+			<span id="ContentReviewDiv" style="display:none;float:left;"></span>
+
+			<div id="bottomButtons"></div>
+		</div>
+	</nav>
+</div>
+</body>
+</html>

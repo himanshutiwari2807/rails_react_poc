@@ -1,0 +1,180 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Leading Change</title>
+	<link rel="stylesheet" type="text/css" href="css/styles.css">
+
+	<script type="text/javascript" src="javascript/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="javascript/jquery-ui.js"></script>
+	<script type="text/javascript" src="javascript/main.js"></script>
+	<script type="text/javascript">
+		pageNext = "LC0380";
+		pageBack = "LC0330";
+		nextActive = false;
+		backActive = true;
+
+		var eventSeq = -1;
+		var popupFrom = "";
+		var popupTo = "";
+		var popupSubject = "";
+		var popupText = "";
+
+		$(document).ready(function () {
+			setTimeout(function () {
+				enterPage();
+			}, 50);
+			$("#audioMain").on({
+				"ended": function () {
+					setTimeout(function () {
+						$("#PC_sprite").css("cursor","pointer");
+						$("#prompt_text").text("It looks like you have an email. Select your computer to read it.");
+						$("#email_sprite").show("slide", {direction: "right"});
+						$("#audio01").trigger("play");
+						eventSeq = 0;
+					}, 1000);
+				}/*, "pause": function () {
+				 this.currentTime = 0;
+				 }*/
+			});
+			$(".officeItem").on("click", function (event) {
+				var cTarget = event.target.id;
+				switch (cTarget) {
+					case "PC_sprite":
+					case "email_sprite":
+					case "email_content2":
+						if (eventSeq == 0) {
+//							popupHeader = "Email Message";
+							popupFrom = "Shannon";
+							popupTo = "You";
+							popupSubject = "Software Upgrade";
+							//popupText = "<strong>From:<\/strong> Shannon<br><strong>Subject:<\/strong> Software Upgrade<br><br>I understand that your office has moved forward on the purchase of the system upgrade without my permission. I halted this purchase because I have yet to see any evidence that this upgrade is cost-effective, and I am disappointed that you ignored my decision.<br><br>Send me a justification for the upgrade by COB today and I will review. Also, please include a progress update on the system to date. I will make a decision on whether or not the order needs to be cancelled.<br><br>&ndash;Shannon";
+							popupText = "I understand that your office has moved forward on the purchase of the system upgrade without my permission. I halted this purchase because I have yet to see any evidence that this upgrade is cost-effective, and I am disappointed that you ignored my decision.<br><br>Send me a justification for the upgrade by COB today and I will review. Also, please include a progress update on the system to date. I will make a decision on whether or not the order needs to be cancelled.<br><br>&ndash;Shannon";
+//							startPopUp3(popupHeader, popupText, 550, 400);
+
+							$("#PC_sprite").css({"cursor":"default","background-image":"url(imagesLsn/PC_e-mail.png)"});
+							$("#email_content2").html(popupText).show();
+							$("#email_to").text("You");
+							$("#email_from").text("Shannon");
+							$("#email_subject").text("Software Upgrade");
+							$("#email_sprite").hide();
+							$("#prompt_text").html("&nbsp;");
+							window.setTimeout(function () {
+								$("#clock_sprite").fadeIn(400);
+								$("#paper_stack").fadeIn(400);
+								var animation = setInterval(function () {
+									var position = "0 " + (cont * imgHeight).toString() + "px";
+									$("#paper_stack").css("background-position", position);
+									cont++;
+									if (cont == 5) {
+										clearInterval(animation);
+										window.setTimeout(function () {
+											//$("#clock_sprite").css("background-image", "url(imagesLsn/clock_fast_times.png)");
+											$("#PC_sprite").css("cursor","pointer");
+											$("#prompt_text").text("Select your computer to read a follow-up email from Shannon.");
+											//activateNext();
+											$("#email_sprite").css({"background-image": "url(imagesLsn/LC0340_email.png)", "z-index": 1}).show("slide", {direction: "right"});
+											$("#audio01").trigger("play");
+											eventSeq++;
+											$("#clock_sprite").fadeOut(400);
+											$("#email_content2").css("cursor", "pointer");
+										}, 3500);
+									}
+								}, 500);
+							}, 4000);
+							break;
+						}
+						if (eventSeq >= 1) {
+//							popupHeader = "Email Message";
+							popupText = "I have reviewed your materials and decided to approve the purchase for the software. It looks like this will save us time and effort in the long run. In the future, do not override my decisions. I am open to discuss anything you don’t agree with.<br><br>&ndash;Shannon";
+							//$("#clock_sprite").hide();
+							//$("#clock_sprite").hide("slow", function(){
+							//$("#clock_sprite").hide("highlight", 400, function(){
+							$("#email_sprite").hide();
+							$("#email_content2").html(popupText).css("cursor", "default");
+							$("#PC_sprite").css("cursor", "default");
+							$("#prompt_text").html("&nbsp;");
+// startPopUp3(popupHeader, popupText, 550, 400);
+							window.setTimeout(function () {
+								//$("#prompt_text").text("Select Next to continue.");
+								activateNext();
+								//nextInactiveMsg = "End of demo. Select Back to view another choice.";
+							}, 1500);
+							//eventSeq++;
+							break;
+						}
+					/*case "phone_sprite":
+					 alert("You have selected the phone. Please try again.");
+					 break;
+					 case "woman_sprite":
+					 alert("You have selected the door. Please try again.");
+					 break;*/
+				}
+				return false;
+			});
+			//$("#paper_stack").fadeIn(400).delay(500).css("background-position","0 260px").delay(500).css("background-position","0 130px").delay(500).css("background-position","0 0");
+			var imgHeight = 130;
+			var cont = 2;
+			var position = "";
+
+			window.setTimeout(function () {
+				$("#audioMain").trigger("play");
+			}, 1000);
+		});
+
+		function enterPageLocal() {
+		}
+	</script>
+</head>
+<body>
+<div class="contentTop">
+	<div id="contentBody"><h1 id="courseHeader"></h1>
+
+		<div id="divProgress"></div>
+
+		<div class="headerBlock"><h2>The Outcome</h2>
+
+			<!--<div id="leadText1"><strong>Your choice:</strong> Make an executive decision to take a calculated risk by having the team purchase the software. Shannon will understand that the upgrade is a critical need.</div>-->
+			<!--<div id="leadText2">What happens: You tell your team to move forward and purchase the software without Shannon’s consent.</div>-->
+		</div>
+		<div id="scrollBlock" class="textBlock">
+			<div id="officeFrame">
+				<!--<img src="imagesLsn/Office.png" height="521" width="803">-->
+				<div id="PC_sprite" class="officeItem"></div>
+				<div id="email_sprite" class="officeItem" style=""></div>
+				<div id="phone_sprite" class="officeItem"></div>
+				<div id="woman_sprite" class="officeItem"></div>
+
+				<div id="paper_stack" class="officeItem"></div>
+				<div id="clock_sprite" class="officeItem"></div>
+				<div id="email_to" class="officeItem"></div>
+				<div id="email_from" class="officeItem"></div>
+				<div id="email_subject" class="officeItem"></div>
+				<div id="email_content2" class="officeItem"></div>
+			</div>
+
+			<audio id="audio01">
+				<source src="audio/email_1.mp3">
+			</audio>
+			<audio id="audioMain">
+				<source src="audio/LC0340_Narrator.mp3">
+			</audio>
+		</div>
+	</div>
+</div>
+<div id="navigationButtons">
+	<nav>
+		<div id="nextNavBar" class="sideNavBar"><a href="javascript:void(0);" id="btnNextID" class="btnNext" title="Next"></a></div>
+		<div id="backNavBar" class="sideNavBar"><a href="javascript:void(0);" id="btnBackID" class="btnBack" title="Back"></a></div>
+		<div class="navblock">
+			<p class="promptText" id="prompt_text" align="center">&nbsp;</p>
+			<span id="ContentReviewDiv" style="display:none;float:left;"></span>
+
+			<div id="bottomButtons"></div>
+		</div>
+	</nav>
+</div>
+</body>
+</html>
